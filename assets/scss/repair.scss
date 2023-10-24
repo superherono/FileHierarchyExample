@@ -1,0 +1,113 @@
+.repair-page {
+	// .repair-page__benefits
+	&__benefits {
+		@media (min-width: $md2) {
+			padding-top: 160px;
+			margin-bottom: 160px;
+		}
+
+		@media (min-width: $md4) and (max-width: $md2) {
+			padding-top: 120px;
+			margin-bottom: 120px;
+		}
+
+		@media (max-width: $md4) {
+			padding-top: 80px;
+			margin-bottom: 80px;
+		}
+	}
+
+	// .repair-page__process-repair
+	&__process-repair {
+		@media (min-width: $md2) {
+			margin-bottom: 160px;
+		}
+
+		@media (min-width: $md4) and (max-width: $md2) {
+			margin-bottom: 120px;
+		}
+
+		@media (max-width: $md4) {
+			margin-bottom: 80px;
+		}
+	}
+
+	// .repair-page__price
+	&__price {
+		background-color: var(--white-dark);
+		border-radius: var(--radius-large);
+
+		@media (min-width: $md2) {
+			padding: 120px 0;
+		}
+
+		@media (min-width: $md4) and (max-width: $md2) {
+			padding: 80px 0;
+		}
+
+		@media (max-width: $md4) {
+			padding: 60px 0;
+
+			position: sticky;
+			z-index: 1;
+			top: -40px;
+
+			.safari & {
+				position: static;
+			}
+		}
+
+		.repair-page--styling & {
+			position: sticky;
+			z-index: 1;
+			top: -40px;
+
+			.safari & {
+				position: static;
+			}
+		}
+	}
+
+	// .page__samples
+	&__samples {
+		position: relative;
+		z-index: 2;
+
+		background-color: var(--white);
+
+		@media (min-width: $md2) {
+			padding: 120px 0 155px;
+		}
+
+		@media (min-width: $md4) and (max-width: $md2) {
+			padding: 80px 0 100px;
+		}
+
+		@media (max-width: $md4) {
+			padding: 60px 0 80px;
+		}
+	}
+
+	// .repair-page__in-media
+	&__in-media {
+		@media (min-width: $md2) {
+			padding-top: 80px;
+			margin-bottom: 160px;
+		}
+
+		@media (min-width: $md4) and (max-width: $md2) {
+			padding-top: 80px;
+			margin-bottom: 120px;
+		}
+
+		@media (max-width: $md4) {
+			padding-top: 60px;
+			margin-bottom: 80px;
+		}
+	}
+}
+
+@import '../sections/repair/benefits/index';
+@import '../sections/repair/process/index';
+@import '../sections/repair/price/index';
+@import '../sections/repair/samples/index';

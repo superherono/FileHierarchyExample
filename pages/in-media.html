@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+	@@include('html/_head.htm',{ "title":"ADAMS в СМИ" })
+
+	<body>
+		@@include('components/_preloader.htm',{})
+
+		<div class="wrapper" data-scroll-container>
+			@@include('html/_header.htm',{})
+
+			<main class="repair-page">
+				<section class="repair-page__hero hero" data-fullscreen>
+					<div class="hero__container">
+						<div class="hero__body">
+							<div class="hero__descr" data-text-animate data-watch>
+								<h1 class="hero__title">Ремонт</h1>
+								<p class="hero__subtitle">
+									Профессионализм, индивидуальный подход и качество — это то, что вы получаете, заказывая ремонт в ADAMS
+								</p>
+							</div>
+							<div class="hero__decor-line"></div>
+							<button type="button" class="hero__scroll-icon">
+								<svg width="15" height="26">
+									<use xlink:href="img/icons/icons.svg#svg-mouse"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="hero__bg">
+						<img
+							src="@img/hero-design-interior-page.jpg"
+							width="1920"
+							height="1080"
+							alt="Awesome image"
+							decoding="async" />
+					</div>
+				</section>
+				<!-- /.hero -->
+
+				<section class="repair-page__in-media in-media">
+					<div class="in-media__container">
+						<h2 class="visually-hidden">ADAMS в СМИ</h2>
+						<div class="in-media__body">
+							<!-- prettier-ignore -->
+							<div class="in-media__items">
+							@@include('components/_in-media-article.htm',{
+							"path":"img/in-media/im-01.jpg",
+							"tag":"новости студии",
+							"title":"Заголовок новости Заголовок новости Заголовок новости",
+							"text":"Длинный текст длинной в 4 строки Задача организации, в особенности же укрепление и развитие структуры требуют определения и уточнения позиций Задача организации, в особенности же укрепление и развитие структуры требуют определения и уточнения позиций "
+							})
+
+							@@include('components/_in-media-article.htm',{
+							"path":"img/in-media/im-02.jpg",
+							"tag":"публикации в СМИ",
+							"title":"Заголовок новости",
+							"text":"Задача организации, в особенности же укрепление и развитие структуры требуют определения и уточнения позиций"
+							})
+
+							@@include('components/_in-media-article.htm',{
+							"path":"img/in-media/im-03.jpg",
+							"tag":"новости студии",
+							"title":"Длинный заголовок длинной в 3 строки. Заголовок новости Заголовок новости Заголовок новости Заголовок новости",
+							"text":"Задача организации, в особенности же укрепление и развитие структуры требуют определения и уточнения позиций Задача организации"
+							})
+
+							@@include('components/_in-media-article.htm',{
+							"path":"img/in-media/im-04.jpg",
+							"tag":"новости студии",
+							"title":"Заголовок новости",
+							"text":"Задача организации, в особенности же укрепление и развитие структуры требуют определения и уточнения позиций"
+							})
+
+							@@include('components/_in-media-article.htm',{
+							"path":"img/in-media/im-05.jpg",
+							"tag":"новости студии",
+							"title":"Заголовок новости",
+							"text":"Задача организации, в особенности же укрепление и развитие структуры требуют определения и уточнения позиций"
+							})
+
+							@@include('components/_in-media-article.htm',{
+							"path":"img/in-media/im-06.jpg",
+							"tag":"новости студии",
+							"title":"Заголовок новости",
+							"text":"Задача организации, в особенности же укрепление и развитие структуры требуют определения и уточнения позиций"
+							})
+						</div>
+							<div class="in-media__button">
+								@@include("components/_button.htm", { "text":"загрузить ещё", "goto":"" })
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_popup.htm',{}) @@include('html/_js.htm',{})
+	</body>
+</html>

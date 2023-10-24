@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Ремонт"
+})
+
+<body>
+	@@include('components/_preloader.htm',{})
+
+	<div class="wrapper" data-scroll-container>
+
+		@@include('html/_header.htm',{})
+
+		<main class="repair-page">
+
+			@@include('sections/repair/hero/_index.htm',{})
+
+			@@include('sections/repair/benefits/_index.htm',{})
+
+			@@include('sections/repair/process/_index.htm',{})
+
+			@@include('sections/repair/price/_index.htm',{})
+
+			@@include('sections/repair/samples/_index.htm',{})
+
+		</main>
+		@@include('html/_footer.htm',{})
+
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

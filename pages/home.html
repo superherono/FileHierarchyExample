@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+	@@include('html/_head.htm',{ "title":"Главная" })
+
+	<body>
+		@@include('components/_preloader.htm',{})
+
+		<div class="wrapper wrapper--home" data-scroll-container>
+			<!-- prettier-ignore -->
+			@@include('html/_header.htm',{})
+
+			<main class="page">
+				<!-- prettier-ignore -->
+				@@include('sections/home/hero/_index.htm',{})
+
+				@@include('sections/home/about/_index.htm',{})
+
+				@@include('sections/home/benefits/_index.htm',{})
+
+				@@include('sections/home/portfolio/_index.htm',{})
+
+				<section class="page__decor decor decor--border-radius decor--dark-bg" data-fullscreen>
+					<img src="@img/decor-sec.jpg" width="1920" height="1080" alt="Awesome image" loading="lazy" decoding="async" />
+				</section>
+				<!-- /.decor -->
+				<!-- prettier-ignore -->
+				@@include('sections/home/services/_index.htm',{})
+
+				@@include('sections/home/team/_index.htm',{})
+
+				<section class="page__team-photo">
+					<img src="@img/team.jpg" width="1920" height="1154" alt="Awesome image" loading="lazy" decoding="async" />
+				</section>
+				<!-- /.decor -->
+				<!-- prettier-ignore -->
+				@@include('html/_footer.htm',{})
+			</main>
+		</div>
+		<!-- prettier-ignore -->
+		@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+	</body>
+</html>

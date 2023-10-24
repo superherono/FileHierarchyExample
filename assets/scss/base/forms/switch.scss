@@ -1,0 +1,38 @@
+.switch {
+    position: relative;
+    width: toRem(28);
+    height: toRem(16);
+
+    background-color: #ddd;
+    border-radius: toRem(24);
+    cursor: pointer;
+    outline: none;
+    transition: all .2s ease-in-out;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:checked {
+        background-color: #000;
+
+        &:after {
+            left: calc(100% - toRem(16));
+        }
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: toRem(16);
+        height: toRem(16);
+
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 toRem(6) rgba(0, 0, 0, .3);
+        transform: scale(.7);
+        left: 0;
+        transition: left 0.6s cubic-bezier(.2, .85, .32, 1.2) 0s,
+            transform 0.6s cubic-bezier(.2, .85, .32, 1.2) 0s;
+    }
+}

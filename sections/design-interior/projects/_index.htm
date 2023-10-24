@@ -1,0 +1,44 @@
+<section class="design-interior-page__projects-interior projects-interior">
+    <div class="projects-interior__container">
+        <h2 class="projects-interior__title title" data-watch data-text-animate>Проекты студии</h2>
+        <div class="projects-interior__body">
+            <div class="projects-interior__articles">
+                <div class="projects-interior__article">
+                    @@include('../../../components/_portfolio-item.htm',{
+                    "path":"img/portfolio/p-01.jpg",
+                    "name":"Апартаменты в центре Москвы",
+                    "area":"50м2"
+                    })
+                </div>
+                <div class="projects-interior__article">
+                    @@include('../../../components/_portfolio-item.htm',{
+                    "path":"img/portfolio/p-02.jpg",
+                    "name":"Дом в пригороде",
+                    "area":"250м2"
+                    })
+                </div>
+                <div class="projects-interior__article">
+                    @@include('../../../components/_portfolio-item.htm',{
+                    "path":"img/portfolio/p-03.jpg",
+                    "name":"Квартира на Западе Москвы",
+                    "area":"120м2"
+                    })
+                </div>
+                <div class="projects-interior__article">
+                    @@include('../../../components/_portfolio-item.htm',{
+                    "path":"img/portfolio/p-04.jpg",
+                    "name":"Апартаменты в центре Москвы",
+                    "area":"80м2"
+                    })
+                </div>
+            </div>
+            <div class="projects-interior__button">
+                @@include("../../../components/_button.htm", {
+                "text":"Смотреть все проекты",
+                "goto":""
+                })
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.projects-interior -->

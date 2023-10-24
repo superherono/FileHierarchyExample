@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+	<!-- prettier-ignore -->
+	@@include('html/_head.htm',{
+	"title":"Стайлинг"
+	})
+
+	<body>
+		@@include('components/_preloader.htm',{})
+
+		<div class="wrapper" data-scroll-container>
+			@@include('html/_header.htm',{})
+
+			<main class="repair-page repair-page--styling">
+				<!-- prettier-ignore -->
+				@@include('sections/styling/hero/_index.htm',{})
+
+				@@include('sections/styling/benefits/_index.htm',{})
+
+				@@include('sections/repair/process/_index.htm',{})
+
+				@@include('sections/styling/price/_index.htm',{})
+
+				@@include('sections/repair/samples/_index.htm',{})
+			</main>
+
+			@@include('html/_footer.htm',{})
+		</div>
+		<!-- prettier-ignore -->
+		@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+	</body>
+</html>

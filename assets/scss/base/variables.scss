@@ -1,0 +1,86 @@
+// Брейк-поинты
+$md0: em(1719.98);
+$md1: em(1440.02);
+$md2: em(1024.02);
+$md3: em(768.02);
+$md5: em(649.98);
+$md4: em(479.98);
+
+:root {
+    --black: #000;
+    --black-light: #333;
+    --white: #fff;
+    --white-dark: #f1efeb;
+
+    --main-color: var(--black-light);
+
+    --gold: #D0B181;
+    --gold-dark: #B18949;
+
+
+    //sizes
+    --radius-small: 8px;
+
+    @media (min-width:$md3) {
+        --radius-large: 40px;
+    }
+
+    @media (max-width:$md3) {
+        --radius-large: 20px;
+    }
+
+    //font-sizes
+
+    @media (min-width:$md0) {
+        --font-size-h1: 44px;
+        --font-size-h2: 36px;
+        --font-size-h4: 24px;
+        --font-size-h5: 18px;
+
+        --font-size-main: 18px;
+        --font-size-small: 14px;
+    }
+
+    @media (max-width:$md0) {
+        --font-size-h5: 16px;
+    }
+
+    @media (min-width:$md3) and (max-width:$md0) {
+        --font-size-h1: 37px;
+        --font-size-h2: 30px;
+        --font-size-h4: 22px;
+    }
+
+    @media (min-width:$md4) and (max-width:$md3) {
+        --font-size-h1: 30px;
+        --font-size-h2: 26px;
+        --font-size-h4: 20px;
+    }
+
+    @media (min-width:$md4) and (max-width:$md0) {
+        --font-size-main: 16px;
+        --font-size-small: 12px;
+    }
+
+    @media (min-width:$md4) {
+        --font-size-h3: 14px;
+    }
+
+    @media (max-width:$md4) {
+        --font-size-h1: 26px;
+        --font-size-h2: 22px;
+        --font-size-h3: 12px;
+        --font-size-h4: 16px;
+
+        --font-size-main: 14px;
+        --font-size-small: 12px;
+    }
+
+    @media (min-width:$md3) {
+        --title-margin: 40px;
+    }
+
+    @media (max-width:$md3) {
+        --title-margin: 20px;
+    }
+}

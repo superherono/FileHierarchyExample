@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"О компании"
+})
+
+<body>
+	@@include('components/_preloader.htm',{})
+
+	<div class="wrapper" data-scroll-container>
+
+		@@include('html/_header.htm',{})
+
+		<main class="about-page">
+
+			@@include('sections/about/hero/_index.htm',{})
+
+			@@include('sections/about/about/_index.htm',{})
+
+			<section class="about-page__decor decor decor--border-radius" data-fullscreen>
+				<img src="@img/decor-sec.jpg" width="1920" height="1080" alt="Awesome image" loading="lazy" decoding="async">
+			</section>
+			<!-- /.decor -->
+
+			@@include('sections/about/team/_index.htm',{})
+		</main>
+		@@include('html/_footer.htm',{})
+
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

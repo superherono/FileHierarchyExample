@@ -1,0 +1,68 @@
+<section class="page__services services">
+    <div class="services__inner">
+        <div class="services__container">
+            <div class="services__body">
+                <div class="services__top">
+                    <div class="services__row-top" data-text-animate data-watch>
+                        <p class="services__suptitle suptitle">Услуги</p>
+                        <h2 class="services__title title">Дизайн интерьеров</h2>
+                    </div>
+                    <div class="services__main-item main-service">
+                        <div class="main-service__images">
+                            <div class="main-service__wide-image">
+                                <img src="@img/services/ser-1.jpg" width="573" height="414" alt="Awesome image">
+                            </div>
+                            <div class="main-service__col">
+                                <div class="main-service__image">
+                                    <img src="@img/services/ser-2.jpg" width="277" height="197" alt="Awesome image">
+                                </div>
+                                <div class="main-service__image">
+                                    <img src="@img/services/ser-3.jpg" width="277" height="197" alt="Awesome image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-service__descr">
+                            <h3 class="main-service__label">Каждый проект ADAMS индивидуален и отражает вашу уникальность, как отпечаток пальца</h3>
+                            <p class="main-service__text">Мы следим за тенденциями в современном дизайне, чтобы сделать ваш интерьер более функциональным и комфортным. ADAMS заботится о каждом в вашей семье, создавая дизайн интерьера, который отвечает всем вашим потребностям и предпочтениям.</p>
+                            <div class="main-service__button">
+                                @@include('../../../components/_button.htm', {
+                                "text":"Подробнее об услуге"
+                                })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="services__middle">
+                    <div class="services__row-top" data-text-animate data-watch>
+                        <h2 class="services__title title">Специалисты нашей студии оказывают полный комплекс услуг «под ключ» — от идеи до реализации</h2>
+                    </div>
+                    <div class="services__text">
+                        <p>
+                            Нам доверяют все этапы создания интерьера: дизайна интерьера, перепланировка помещений, подбор мебели, освещения, декора и не только.
+                        </p>
+                        <p>Мы сотрудничаем с опытными строительными бригадами и поставщиками, чтобы обеспечить высокое качество выполнения всех работ.</p>
+                    </div>
+                </div>
+                <div class="services__bottom">
+                    <div class="services__items">
+                        <div class="services__item">
+                            @@include("../../../components/_services-item.htm", {
+                            "path":"img/services/ser-4.jpg",
+                            "name":"Ремонт",
+                            "decr":"В команде Адамс есть все необходимые специалисты. Мы работаем как единое целое, воплощая проекты от визуализации до реализации."
+                            })
+                        </div>
+                        <div class="services__item">
+                            @@include("../../../components/_services-item.htm", {
+                            "path":"img/services/ser-5.jpg",
+                            "name":"Стайлинг",
+                            "decr":"Стайлинг внесёт завершающий штрих в ваш интерьер, наполнив его атмосферой уюта."
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.services -->

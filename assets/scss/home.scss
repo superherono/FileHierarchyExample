@@ -1,0 +1,131 @@
+@import 'node_modules/locomotive-scroll/dist/locomotive-scroll';
+
+
+.page {
+
+    // .page__hero
+    &__hero {}
+
+    // .page__block-about
+    &__block-about {
+        &:not(:last-child) {
+            @media (min-width:$md2) {
+                margin-bottom: 80px;
+                padding-top: 160px;
+            }
+
+            @media (min-width:$md4) and (max-width:$md2) {
+                margin-bottom: 60px;
+                padding-top: 120px;
+            }
+
+            @media (max-width:$md4) {
+                margin-bottom: 40px;
+                padding-top: 80px;
+            }
+        }
+    }
+
+    // .page__benefits
+    &__benefits {
+        background-color: var(--white);
+
+        &:not(:last-child) {
+            @media (min-width:$md2) {
+                padding-bottom: 160px;
+                padding-top: 80px;
+            }
+
+            @media (min-width:$md4) and (max-width:$md2) {
+                padding-bottom: 120px;
+                padding-top: 60px;
+            }
+
+            @media (max-width:$md4) {
+                padding-bottom: 80px;
+                padding-top: 40px;
+            }
+        }
+    }
+
+    // .page__portfolio
+    &__portfolio {}
+
+    // .page__decor
+    &__decor {
+        &:not(:last-child) {
+            margin-bottom: 0;
+        }
+    }
+
+    // .page__services
+    &__services {
+
+        @media (min-width:$md3) {
+            margin-top: -30px;
+        }
+
+        @media (max-width:$md3) {
+            margin-top: -20px;
+        }
+    }
+
+    // .page__team
+    &__team {
+        position: relative;
+        z-index: 2;
+        background-color: var(--white);
+
+        @media (min-width:$md2) {
+            padding-top: 160px;
+        }
+
+        @media (min-width:$md3) {
+            padding-bottom: 80px;
+        }
+
+        @media (max-width:$md3) {
+            padding-bottom: 60px;
+        }
+
+        @media (min-width:$md4) and (max-width:$md2) {
+            padding-top: 120px;
+        }
+
+        @media (max-width:$md4) {
+            padding-top: 80px;
+        }
+    }
+
+    &__team-photo {
+        position: sticky;
+        z-index: 2;
+        top: 0;
+
+        @media (min-width:$md2) {
+            aspect-ratio: 1920/1154;
+            margin-bottom: -80px;
+        }
+
+        @media (max-width:$md2) {
+            aspect-ratio: 360/240;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+}
+
+
+
+
+@import "../sections/home/hero/index";
+@import "../sections/home/about/index";
+@import "../sections/home/benefits/index";
+@import "../sections/home/portfolio/index";
+@import "../sections/home/services/index";
+@import "../sections/home/team/index";

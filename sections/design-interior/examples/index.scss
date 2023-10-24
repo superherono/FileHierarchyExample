@@ -1,0 +1,109 @@
+.examples-interior {
+
+    // .examples-interior__container
+    &__container {}
+
+    // .examples-interior__top-row
+    &__top-row {
+        margin-bottom: 40px;
+
+        @media (max-width:$md5) {
+            width: 120%;
+        }
+    }
+
+    // .examples-interior__title
+    &__title {
+        @media (min-width:$md3) {
+            max-width: 510px;
+        }
+
+        @media (min-width:$md4) and (max-width:$md3) {
+            max-width: 555px;
+        }
+
+        @media (max-width:$md4) {
+            max-width: 328px;
+        }
+    }
+
+    // .examples-interior__items
+    &__items {
+        margin-bottom: 40px;
+
+        @media (min-width:$md5) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    }
+
+    // .examples-interior__item
+    &__item {
+        position: relative;
+        display: block;
+
+        aspect-ratio: 870 / 500;
+        border-radius: var(--radius-small);
+        overflow: hidden;
+
+        &:not(:last-child) {
+            @media (max-width:$md5) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    // .examples-interior__icon
+    &__icon {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 50%;
+        background-color: var(--gold);
+
+        color: var(--white);
+        line-height: 140%;
+
+        @media (min-width:$md3) {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        @media (min-width:$md4) and (max-width:$md3) {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        @media (min-width:$md4) {
+            width: 40px;
+            height: 40px;
+        }
+
+        @media (max-width:$md4) {
+            bottom: 16px;
+            right: 16px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    // .examples-interior__button
+    &__button {
+        margin: 0 auto;
+
+        @media (min-width:$md1) {
+            max-width: 322px;
+        }
+
+        @media (max-width:$md1) {
+            max-width: 292px;
+        }
+
+        .button {
+            width: 100%;
+        }
+    }
+}

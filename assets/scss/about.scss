@@ -1,0 +1,59 @@
+.about-page {
+
+    // .about-page__hero
+    &__hero {}
+
+    // .about-page__description-about
+    &__description-about {
+        background-color: var(--white-dark);
+
+        @media (min-width:$md3) {
+            padding: 160px 0 195px;
+        }
+
+        @media (min-width:$md4) and (max-width:$md3) {
+            padding: 120px 0 140px;
+        }
+
+        @media (max-width:$md4) {
+            padding: 80px 0 100px;
+        }
+    }
+
+    // .about-page__decor
+    &__decor {
+        @media (min-width:$md3) {
+            margin-top: -35px;
+        }
+
+        @media (max-width:$md3) {
+            margin-top: -20px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 0;
+        }
+    }
+
+    // .page__block-team
+    &__block-team {
+        position: relative;
+        z-index: 5;
+        background-color: var(--white);
+
+        @media (min-width:$md3) {
+            padding: 160px 0 195px;
+        }
+
+        @media (min-width:$md4) and (max-width:$md3) {
+            padding: 120px 0 140px;
+        }
+
+        @media (max-width:$md4) {
+            padding: 80px 0 100px;
+        }
+    }
+}
+
+@import "../sections/about/about/index";
+@import "../sections/about/team/index";

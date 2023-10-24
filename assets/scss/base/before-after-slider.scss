@@ -1,0 +1,96 @@
+.compare-item {
+	position: relative;
+	// overflow: hidden;
+	width: 100%;
+	height: 100%;
+
+	//local variables
+	--change-line-width: 4px;
+	--change-line-height: 100%;
+	--change-line-color: var(--white-dark);
+
+	// .compare-item__before-ibg
+	&__before-ibg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		overflow: hidden;
+		z-index: 5;
+		width: 50%;
+		height: 100%;
+
+		user-select: none;
+
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+		}
+	}
+
+	// .compare-item__after-ibg
+	&__after-ibg {
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		user-select: none;
+
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+		}
+	}
+
+	// .compare-item__change
+	&__change {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		z-index: 10;
+		width: var(--change-line-width);
+		height: var(--change-line-height);
+
+		background-color: var(--change-line-color);
+
+		transform: translate(0px, -50%);
+
+		user-select: none;
+		cursor: grab;
+
+		&:active {
+			cursor: grabbing;
+		}
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		&::before {
+			z-index: 10;
+			width: 16px;
+			height: 60px;
+			background: url('@img/icons/before-after-arrows.svg') 0 0 / contain no-repeat;
+		}
+
+		&::after {
+			width: 60px;
+			height: 60px;
+
+			border-radius: 100%;
+			background-color: transparent;
+		}
+	}
+}

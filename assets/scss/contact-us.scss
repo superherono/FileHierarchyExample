@@ -1,0 +1,259 @@
+.contact-us-page {
+	background-color: var(--black-light);
+
+	// .contact-us-page__contact-us
+	&__contact-us {
+		color: var(--white);
+
+		@media (min-width: $md2) {
+			margin: 0 0 40px;
+		}
+		@media (max-width:$md2){
+			margin: 0 0 20px 0;
+		}
+
+		@media (min-width: $md4) and (max-width: $md2) {
+			margin: 0 0 140px;
+		}
+
+		@media (max-width: $md4) {
+			margin: 0 0 100px;
+		}
+	}
+}
+
+.contact-us {
+	position: relative;
+
+	// .contact-us__container
+	&__container {
+	}
+
+	// .contact-us__body
+	&__body {
+		@media (min-width: $md3) {
+			padding-top: 202px;
+		}
+
+		@media (min-width: $md4) and (max-width: $md3) {
+			padding-top: 150px;
+		}
+
+		@media (max-width: $md4) {
+			padding-top: 120px;
+		}
+	}
+
+	// .contact-us__content
+	&__content {
+		@media (min-width: em(950)) {
+			@include adaptiveValue('max-width', 573, 450, 0, 1920, 1440);
+		}
+
+		@media (min-width: em(830)) and (max-width: em(950)) {
+			max-width: 385px;
+		}
+
+		@media (min-width: em(830)) {
+			padding-bottom: 120px;
+		}
+
+		@media (max-width: em(830)) {
+			margin-bottom: 40px;
+		}
+	}
+
+	// .contact-us__top-row
+	&__top-row {
+		margin-bottom: 20px;
+
+		border-bottom: 1px solid var(--gold);
+
+		@media (min-width: $md4) {
+			padding-bottom: 40px;
+		}
+
+		@media (max-width: $md4) {
+			padding-bottom: 55px;
+		}
+	}
+
+	// .contact-us__title
+	&__title {
+	}
+
+	// .contact-us__links
+	&__links {
+		display: grid;
+
+		border-bottom: 1px solid var(--gold);
+
+		@media (min-width: $md3) {
+			padding-bottom: 80px;
+		}
+
+		@media (min-width: em(850)) {
+			grid-template-columns: 1fr 1fr;
+			gap: 40px 20px;
+		}
+
+		@media (min-width: em(700)) and (max-width: em(850)) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 20px;
+		}
+
+		@media (max-width: em(700)) {
+			grid-template-columns: 1fr 1fr;
+			gap: 30px 4px;
+		}
+
+		@media (min-width: $md4) and (max-width: $md3) {
+			padding-bottom: 40px;
+		}
+
+		@media (max-width: $md4) {
+			padding-bottom: 60px;
+		}
+	}
+
+	// .contact-us__item
+	&__item {
+	}
+
+	// .contact-us__caption
+	&__caption {
+		margin-bottom: 10px;
+
+		font-size: var(--font-size-h3);
+		line-height: normal;
+		opacity: 0.6;
+	}
+
+	// .contact-us__link
+	&__link {
+		display: block;
+
+		font-weight: 600;
+		line-height: 140%;
+		font-size: var(--font-size-h5);
+
+		@at-root a#{&} {
+			transition: color 0.4s ease;
+
+			@media (any-hover: hover) {
+				&:hover {
+					color: var(--gold);
+				}
+			}
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 6px;
+		}
+	}
+
+	// .contact-us__list
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	// .contact-us__item-list
+	&__item-list {
+		@media (any-hover: hover) {
+			&:hover {
+				svg {
+					transform: scale(1.05);
+				}
+			}
+		}
+		svg {
+			transition: transform 0.4s ease;
+		}
+	}
+
+	// .contact-us__bottom
+	&__bottom {
+		border-bottom: 1px solid var(--gold);
+
+		@media (min-width: $md3) {
+			padding: 40px 0;
+		}
+
+		@media (min-width: $md4) and (max-width: $md3) {
+			padding: 20px 0;
+		}
+
+		@media (max-width: $md4) {
+			padding: 16px 0;
+		}
+	}
+
+	// .contact-us__col
+	&__col {
+	}
+
+	// .contact-us__map
+	&__map {
+		filter: grayscale(100%);
+
+		@media (min-width: em(1200)) {
+			width: percent(1098, 1920);
+		}
+
+		@media (min-width: em(830)) and (max-width: em(1200)) {
+			width: percent(470, 960);
+		}
+
+		@media (min-width: em(830)) {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			right: 0;
+		}
+
+		@media (max-width: em(830)) {
+			& > ymaps > ymaps,
+			& > ymaps {
+				width: 100% !important;
+				height: 100% !important;
+			}
+		}
+
+		@media (min-width: $md4) and (max-width: em(830)) {
+			aspect-ratio: 728 / 293;
+		}
+
+		@media (max-width: $md4) {
+			aspect-ratio: 328 / 260;
+		}
+
+		&::before {
+			@media (min-width: em(830)) {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background: linear-gradient(180deg, #333 9.49%, rgba(51, 51, 51, 0) 40.3%);
+			}
+		}
+
+		img {
+			position: absolute;
+			// z-index: 5;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__inner-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+}
