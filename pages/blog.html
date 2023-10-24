@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('html/_head.htm',{
+"title":"Blog Page"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page page--overview">
+			@@include('html/partials/blog/_hero.htm',{})
+
+			<section class="page__blog-articles blog-articles">
+				<div class="blog-articles__container">
+					<h2 class="blog-articles__title title">Latest Posts</h2>
+					<div class="blog-articles__items blog__items">
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-01.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">17 Best LinkedIn Summary & Bio Examples</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-02.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">Advice and Resources for AAPI Business Owners</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-03.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">12 Elevator Pitch Examples to Inspire Your Own</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-01.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">17 Best LinkedIn Summary & Bio Examples</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-02.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">Advice and Resources for AAPI Business Owners</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-03.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">12 Elevator Pitch Examples to Inspire Your Own</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+					</div>
+				</div>
+			</section>
+			<!-- /.blog-articles -->
+
+
+			@@include('html/partials/blog/_whitepaper.htm',{})
+
+			<section class="page__blog-articles blog-articles">
+				<div class="blog-articles__container">
+					<div class="blog-articles__items blog__items">
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-01.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">17 Best LinkedIn Summary & Bio Examples</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-02.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">Advice and Resources for AAPI Business Owners</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+						<article class="blog-articles__item article-blog">
+							<div class="article-blog__image">
+								<img src="@img/blog/b-03.jpg" alt="">
+							</div>
+							<div class="article-blog__info">
+								<div class="article-blog__data">12 Jan • 5 min read</div>
+								<h3 class="article-blog__title">12 Elevator Pitch Examples to Inspire Your Own</h3>
+							</div>
+							<a href="#" class="article-blog__link">Read more</a>
+						</article>
+					</div>
+			</section>
+			<!-- /.blog-articles -->
+
+			@@include('html/partials/blog/_growth-insights.htm')
+
+			@@include('html/partials/_subscribe.htm')
+
+			@@include('html/partials/home/_contact-us.htm',{})
+			@@include('html/partials/home/_about.htm',{})
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

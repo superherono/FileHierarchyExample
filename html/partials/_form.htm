@@ -1,0 +1,32 @@
+<!-- The form is completely ready to go, just replace the path in the "action" attribute. JS script will collect all the fields and send them to the server. -->
+<!-- For production it is necessary to remove the "data-dev" attribute -->
+<form class="form" action="#" method="POST" data-dev data-ajax data-popup-message=".succes">
+    <div class="form__lines">
+        <div class="form__line">
+            <label for="user_name" class="form__label">Company name </label>
+            <input id="user_name" class="input" autocomplete="off" type="text" name="user_name" data-required data-error="Enter a name" placeholder="Company name  ">
+        </div>
+        <div class="form__line">
+            <label for="user_email" class="form__label">E-mail</label>
+            <input id="user_email" class="input" autocomplete="off" type="text" name="user_email" data-required="email" data-error="Enter email" placeholder="name@example.com">
+        </div>
+        <div class="form__line">
+            <div class="form__row">
+                <label for="user_phone" class="form__label">Phone number</label>
+                <span>optional</span>
+            </div>
+            <!-- To change the phone mask, edit the data attribute "data-inputmask" -->
+            <input id="user_phone" class="input js-phone" data-inputmask="'mask': '+41-99-9999999'" autocomplete="off" type="text" name="user_phone" placeholder="">
+        </div>
+        <div class="form__line">
+            <label for="user_message" class="form__label">Your message</label>
+            <textarea id="user_message" class="input" data-required name="user_message" data-error="Enter a message" placeholder=""></textarea>
+        </div>
+        <div class="form__line">
+            <button type="submit" class="form__button button button--filled"><span>Send message</span></button>
+        </div>
+        <div class="form__note">
+            By submitting this form I confirm that I have read Hyperio’s <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</form>

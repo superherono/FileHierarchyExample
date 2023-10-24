@@ -1,81 +1,78 @@
-<header class="header" data-lp>
-	<div class="header__container">
-		<div class="header__body">
-			<a href="#" class="header__logo"><img src="../img/logo.svg" width="138" height="30" alt="" /></a>
-			<div class="header__menu menu">
-				<button type="button" class="menu__icon">
-					<span class="icon-menu">
-						<span></span>
-					</span>
-				</button>
+<header class="header" data-scroll-show data-lp>
+	<div class="header__top">
+		<div class="header__container-wide">
+			<div class="header__inner">
+				<div class="header__actions">
+					<a href="tel:+392037144800" class="header__link-action">
+						<svg width="12" height="13">
+							<use xlink:href="img/icons/icons.svg#svg-phone"></use>
+						</svg>
+						<span> Call +39 203 714 4800</span>
+					</a>
+					<a href="mailto:hello@hyperio.ch" class="header__link-action">
+						<svg width="16" height="17">
+							<use xlink:href="img/icons/icons.svg#svg-mail"></use>
+						</svg>
+						<span>hello@hyperio.ch</span>
+					</a>
+				</div>
+				<a href="#" class="header__link-action header__link-action--job" data-da=".menu__body, 650, last">
+					<span>View Job Openings</span>
+					<svg width="11" height="11">
+						<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+					</svg>
+				</a>
 			</div>
 		</div>
 	</div>
-	<!-- Основное меню. Работать с ним. Дополнитеьное меню будет сгенерировано через JS -->
-	<div class="menu">
-		<nav class="menu__body">
-			<div class="menu__container">
-				<div class="menu__wrapper">
-					<ul class="menu__list">
-						<li class="menu__item menu__item--sublist">
-							<button type="button" class="menu__link">
-								<span>Портфолио</span>
-								<span class="menu__icon-sublist">
-									<svg width="8" height="12">
-										<use xlink:href="img/icons/icons.svg#svg-arr-down"></use>
+	<div class="header__main">
+		<div class="header__container-wide">
+			<div class="header__inner">
+				<a href="#" class="header__logo"><img src="../img/logo.svg" alt="" decoding="async" width="109" height="30"></a>
+				<div class="header__menu menu">
+					<button type="button" class="menu__icon icon-menu"><span></span></button>
+					<nav class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item"><a href="#" class="menu__link">Home</a></li>
+							<li class="menu__item" data-goto=".services" data-goto-header><a href="#" class="menu__link">Services</a></li>
+							<li class="menu__item"><a href="#" class="menu__link">Technology</a></li>
+							<li class="menu__item"><a href="#" class="menu__link">About</a></li>
+							<li class="menu__item" data-goto=".blog" data-goto-header><a href="#" class="menu__link">Resources</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="header__buttons">
+					<div class="header__languages languages">
+						<button class="languages__label">
+							<svg width="24" height="24">
+								<use xlink:href="img/icons/icons.svg#svg-usa"></use>
+							</svg>
+							<span>English</span>
+							<svg width="24" height="24">
+								<use xlink:href="img/icons/icons.svg#svg-arr-dropdown"></use>
+							</svg>
+						</button>
+						<ul class="languages__options">
+							<li class="languages__option">
+								<a href="#">
+									<svg width="24" height="24">
+										<use xlink:href="img/icons/icons.svg#svg-germany"></use>
 									</svg>
-								</span>
-							</button>
-							<ul class="menu__sublist" hidden>
-								<li class="menu__item"><a href="" class="menu__link">Квартиры</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Дома</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Офисы</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Кафе и рестораны</a></li>
-							</ul>
-						</li>
-						<li class="menu__item menu__item--sublist">
-							<button type="button" class="menu__link">
-								<span>Услуги</span>
-								<span class="menu__icon-sublist">
-									<svg width="8" height="12">
-										<use xlink:href="img/icons/icons.svg#svg-arr-down"></use>
+									<span>Deutsch</span>
+								</a>
+							</li>
+							<li class="languages__option">
+								<a href="#">
+									<svg width="24" height="24">
+										<use xlink:href="img/icons/icons.svg#svg-france"></use>
 									</svg>
-								</span>
-							</button>
-							<ul class="menu__sublist" hidden>
-								<li class="menu__item"><a href="" class="menu__link">Дизайн интерьера</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Ремонт</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Стайлинг</a></li>
-							</ul>
-						</li>
-						<li class="menu__item"><a href="" class="menu__link">О студии</a></li>
-						<li class="menu__item"><a href="" class="menu__link">Новости</a></li>
-						<li class="menu__item"><a href="" class="menu__link">Контакты</a></li>
-					</ul>
-					<div class="menu__bottom">
-						<ul class="menu__contact-list">
-							<li class="menu__item-contact"><a class="menu__link-contact" href="#">+7 999 999-99-99</a></li>
-							<li class="menu__item-contact"><a class="menu__link-contact" href="#">Telegram</a></li>
-							<li class="menu__item-contact"><a class="menu__link-contact" href="#">WhatsApp</a></li>
-							<li class="menu__item-contact"><a class="menu__link-contact" href="#">info@adams.ru</a></li>
+									<span>Français</span>
+								</a>
+							</li>
 						</ul>
 					</div>
+					<button type="button" class="header__button button button--filled" data-da=".menu__body, 479, last" data-goto=".contact-us__form" data-goto-header>Get in touch</button>
 				</div>
-			</div>
-			<div class="menu__bg">
-				<img src="@img/menu-bg.jpg" width="1920" height="1080" alt="Awesome image" loading="lazy" decoding="async" />
-			</div>
-		</nav>
-	</div>
-	<div class="header__sticky sticky-header">
-		<div class="sticky-header__container">
-			<div class="sticky-header__body">
-				<div class="sticky-header__logo">
-					<a href="#"><img src="../img/logo-dark.svg" alt="" /></a>
-				</div>
-				<ul class="sticky-header__items">
-					<!-- Контент будет продублирован из основного меню -->
-				</ul>
 			</div>
 		</div>
 	</div>

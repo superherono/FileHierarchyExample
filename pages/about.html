@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 @@include('html/_head.htm',{
-"title":"О компании"
+"title":"About Us"
 })
 
 <body>
-	@@include('components/_preloader.htm',{})
-
-	<div class="wrapper" data-scroll-container>
-
+	<div class="wrapper">
 		@@include('html/_header.htm',{})
-
-		<main class="about-page">
-
-			@@include('sections/about/hero/_index.htm',{})
-
-			@@include('sections/about/about/_index.htm',{})
-
-			<section class="about-page__decor decor decor--border-radius" data-fullscreen>
-				<img src="@img/decor-sec.jpg" width="1920" height="1080" alt="Awesome image" loading="lazy" decoding="async">
-			</section>
-			<!-- /.decor -->
-
-			@@include('sections/about/team/_index.htm',{})
+		<main class="page page--about-us">
+			@@include('html/partials/about/_hero.htm',{})
+			@@include('html/partials/about/_our-team.htm',{})
+			@@include('html/partials/about/_services.htm',{})
+			@@include('html/partials/about/_description-about.htm',{})
+			@@include('html/partials/about/_about.htm',{})
+			@@include('html/partials/about/_blockquote.htm',{})
+			@@include('html/partials/about/_contact-us.htm',{})
+			@@include('html/partials/about/_partners.htm',{})
 		</main>
 		@@include('html/_footer.htm',{})
-
 	</div>
 	@@include('html/_popup.htm',{})
 	@@include('html/_js.htm',{})

@@ -1,0 +1,381 @@
+.hero {
+
+
+    // .hero__container
+    &__container {}
+
+    // .hero__body
+    &__body {
+        position: relative;
+
+        @media (min-width:$md3) {
+            padding: 80px 0 180px;
+        }
+
+        @media (max-width:$md3) {
+            padding: 70px 0 0;
+        }
+
+        .page--services &,
+        .page--about-us & {
+            @media (min-width:$md3) {
+                padding-bottom: 80px;
+            }
+
+            @media (max-width:$md3) {
+                padding-bottom: 40px;
+            }
+        }
+        .page--services & {
+            @media (min-width:$md2){
+                 display: flex;
+                 justify-content:space-between;
+                 align-items:center; 
+            }
+        }
+    }
+
+    // .hero__services-image
+    &__services-image {
+        @media (min-width:$md2){
+             flex: 0 1 573px; 
+        }
+        @media (max-width:$md2){
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    &__inner {
+
+        max-width: 710px;
+
+        .page--about-us & {
+            max-width: 840px;
+        }
+
+        .page--services & {
+            @media (min-width:$md2){
+                flex: 0 1 561px;
+                margin-right: 40px;
+            }
+            @media (max-width:$md2){
+                margin-bottom: 60px;
+            }
+        }
+    }
+
+    // .hero__top
+    &__top {
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    // .hero__title
+    &__title {
+        @include adaptiveValue("font-size", 72, 48, 0, 1300, 650);
+        line-height: math.div(84, 72);
+        letter-spacing: -0.06em;
+        font-weight: 600;
+        color: var(--secondary);
+    }
+
+    // .hero__ideas
+    &__ideas {
+        @media (min-width:$md1) {
+            position: absolute;
+            top: 74px;
+            left: 190px; //27% 
+        }
+
+        @media (max-width:$md1) {
+            display: none;
+        }
+
+        .page--about-us & {
+            @media (min-width:$md1) {
+                position: absolute;
+                top: auto;
+                left: auto;
+                bottom: 0;
+                right: 40px;
+            }
+        }
+    }
+
+    // .hero__with-love
+    &__with-love {
+        position: absolute;
+
+        //right: 21px; //3%
+        @include adaptiveValue("right", 21, 190, 0, 1250, 766);
+
+        transform: translate3D(0, -100%, 0);
+
+        @media (min-width:$md2) {
+            top: 24px;
+        }
+
+        @media (max-width:$md2) {
+            top: 16px;
+        }
+
+        @media (min-width:em(500)) and (max-width:$md3) {
+            @include adaptiveValue("right", 367, 143, 0, 750, 500);
+        }
+
+        @media (max-width:$md3) {
+            width: 130px;
+            height: 40px;
+            top: 16px;
+            // right: 367px;
+        }
+
+        @media (max-width: em(500)) {
+            @include adaptiveValue("right", 143, 17, 0, 500, 375);
+        }
+    }
+
+    // .hero__descr
+    &__descr {
+        line-height: math.div(36, 21);
+        color: var(--secondary);
+        opacity: 0.8;
+
+        &:not(:last-child) {
+            @media (min-width:$md3) {
+                margin-bottom: 50px;
+            }
+
+            @media (max-width:$md3) {
+                margin-bottom: 30px;
+            }
+        }
+
+        span {
+            @media (max-width:$md4) {
+                display: none;
+            }
+        }
+    }
+
+    // .hero__button
+    &__button {
+        width: 100%;
+
+        background-color: var(--secondary);
+        color: var(--white-pure);
+
+        @media (max-width:$md3) {
+            margin-bottom: 50px;
+        }
+
+        @media (min-width:$md4) {
+            max-width: 312px;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: var(--orange);
+
+                svg {
+                    transform: translate3D(0px, 0px, 0);
+                }
+            }
+        }
+    }
+
+    // .hero__image
+    &__image {
+        @media (min-width:$md3) {
+            position: absolute;
+            z-index: 2;
+            top: 402px;
+        }
+
+        @media (min-width:em(1350)) {
+            right: -45px;
+        }
+
+        @media (min-width:$md3) and (max-width:em(1350)) {
+            right: 0;
+        }
+
+        @media (max-width:$md3) {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        img {
+            @media (min-width:$md3) and (max-width:em(1350)) {
+                @include adaptiveValue("width", 772, 450, 0, 1350, 768);
+            }
+
+            @media (max-width:$md3) {
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+    }
+
+    // .hero__about
+    &__about {
+        position: relative;
+
+        background: linear-gradient(0deg, #FD9E28, #FD9E28),
+            linear-gradient(0deg, #FFFFFF, #FFFFFF),
+            #FFFFFF;
+
+        @media (min-width:$md2) {
+            padding: 300px 0 100px;
+        }
+
+        @media (min-width:$md3) and (max-width:$md2) {
+            padding: 200px 0 80px;
+        }
+
+        @media (max-width:$md3) {
+            padding: 140px 0 40px;
+        }
+
+        &--default {
+            @media (min-width:$md2) {
+                padding: 150px 0 100px;
+            }
+
+            @media (min-width:$md3) and (max-width:$md2) {
+                padding: 120px 0 80px;
+            }
+
+            @media (max-width:$md3) {
+                padding: 80px 0 40px;
+            }
+        }
+
+        .page--about-us & {
+            @media (min-width:$md2) {
+                padding: 200px 0 100px;
+            }
+
+            @media (min-width:$md3) and (max-width:$md2) {
+                padding: 100px 0 80px;
+            }
+
+            @media (max-width:$md3) {
+                padding: 80px 0 40px;
+            }
+        }
+
+        &:not(.hero__about--default) {
+            p {
+                max-width: 675px;
+
+                line-height: math.div(48, 36);
+                letter-spacing: -0.01em;
+                font-weight: 600;
+                color: var(--black-dark);
+
+                @include adaptiveValue("font-size", 36, 24, 0, 1300, 650);
+
+            }
+        }
+    }
+
+    &__shape {
+        position: absolute;
+        z-index: 2;
+        bottom: -132px;
+        left: 0;
+        width: 100%;
+
+        opacity: 0;
+
+        transition: opacity .6s ease;
+
+        &._watcher-view {
+            opacity: 1;
+        }
+
+        @media (max-width:$md5) {
+            height: 135px;
+        }
+    }
+
+    // .hero__wide-image
+    &__wide-image {
+        position: relative;
+        width: 100%;
+
+        @media (min-width:em(1440)) {
+            height: 710px;
+        }
+
+        @media (max-width: em(1440)) {
+            aspect-ratio: 1440/710;
+        }
+
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+
+
+        }
+    }
+
+    // .hero__suptitle-about
+    &__suptitle-about {
+        margin-bottom: 20px;
+
+        line-height: 1.2;
+        font-weight: 500;
+        color: var(--secondary);
+
+        @media (min-width:$md3) {
+            font-size: 24px;
+        }
+
+        @media (max-width:$md3) {
+            font-size: 20px;
+        }
+    }
+
+    // .hero__descr-about
+    &__descr-about {
+        max-width: 675px;
+
+        line-height: math.div(48, 36);
+        letter-spacing: -0.01em;
+        font-weight: 600;
+        color: var(--black-dark);
+
+        @include adaptiveValue("font-size", 36, 24, 0, 1300, 650);
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+
+    // .hero__text-about
+    &__text-about {
+        max-width: 815px;
+
+        line-height: math.div(33, 21);
+        opacity: 0.8;
+        color: var(--black-dark);
+    }
+
+}

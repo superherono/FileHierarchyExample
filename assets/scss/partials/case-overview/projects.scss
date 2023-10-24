@@ -1,0 +1,132 @@
+.projects-case-overview {
+
+    // .projects-case-overview__container
+    &__container {}
+
+    // .projects-case-overview__items
+    &__items {}
+
+    // .projects-case-overview__item
+    &__item {
+        border-radius: 20px;
+        background-color: var(--white-pure);
+        color: var(--secondary);
+
+        @media (min-width:em(1400)) {
+            gap: 90px;
+        }
+
+        @media (min-width:$md2) and (max-width:em(1400)) {
+            gap: 40px;
+        }
+
+        @media (min-width:$md2) {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+        }
+
+        @media (min-width:$md3) {
+            padding: 80px;
+        }
+
+        @media (max-width:$md3) {
+            padding: 30px 20px 20px;
+        }
+
+        &:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 50px;
+        }
+    }
+
+    // .projects-case-overview__image
+    &__image {
+        border-radius: 20px;
+        overflow: hidden;
+
+        aspect-ratio: 490/360;
+
+        background-color: var(--gray-lightest);
+
+        @media (min-width:$md2) {
+            flex: 0 1 490px;
+        }
+
+        @media (max-width:$md2) {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width:$md4) and (max-width:$md2) {
+            max-width: 450px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    // .projects-case-overview__content
+    &__content {
+        @media (min-width:$md2) {
+            flex: 0 1 500px;
+        }
+    }
+
+    // .projects-case-overview__info
+    &__info {
+        &:not(:last-child) {
+            @media (min-width:$md3) {
+                margin-bottom: 90px;
+            }
+
+            @media (max-width:$md3) {
+                margin-bottom: 50px;
+            }
+        }
+    }
+
+    // .projects-case-overview__suptitle
+    &__suptitle {
+        margin-bottom: 20px;
+
+        line-height: math.div(24, 21);
+        font-weight: 500;
+        color: var(--orange);
+    }
+
+    // .projects-case-overview__title
+    &__title {
+        text-align: left;
+        color: var(--secondary);
+
+        &:not(:last-child) {
+            margin-bottom: 40px;
+        }
+    }
+
+    // .projects-case-overview__button
+    &__button {}
+
+    // .projects-case-overview__descr
+    &__descr {
+        color: var(--blue);
+        line-height: math.div(32, 21);
+
+        p {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+
+            &:last-child {
+                opacity: .8;
+            }
+        }
+    }
+}

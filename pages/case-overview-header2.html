@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('html/_head.htm',{
+"title":"Case Overview"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page page--overview">
+			<section class="page__blog-hero hero-case-overview">
+				<div class="hero-case-overview__container">
+					<div class="hero-case-overview__wrapper">
+						<div class="hero-case-overview__body">
+							<a href="#" class="hero-case-overview__link-back">
+								<svg width="14" height="14">
+									<use xlink:href="img/icons/icons.svg#svg-arr-left"></use>
+								</svg>
+								<span>Go back</span>
+							</a>
+							<div class="hero-case-overview__content">
+								<h1 class="hero-case-overview__title">Case Studies</h1>
+								<p class="hero-case-overview__descr">Unlocking the Benefits of Blog Posts, Whitelabel Articles, and More. Enhance Your Knowledge and Stay Ahead of the Game with Hyperio’s help.</p>
+							</div>
+						</div>
+						<div class="hero-case-overview__image">
+							<img src="@img/blog/bh-01.svg" width="520" height="520" alt="Awesome image">
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.hero-case-overview -->
+
+			@@include('html/partials/case-overview/_projects.htm',{})
+			@@include('html/partials/case-overview/_faq.htm',{})
+			@@include('html/partials/home/_contact-us.htm',{})
+			@@include('html/partials/home/_about.htm',{})
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

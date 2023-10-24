@@ -1,15 +1,9 @@
-// Подключение списка активных модулей
-import {
-	flsModules
-} from "./modules.js";
-import {
-	locomotiveScroll
-} from "./script.js";
+
+import { flsModules } from "./modules.js";
 
 
-/* Проверка поддержки webp, добавление класса webp или no-webp для HTML */
 export function isWebp() {
-	// Проверка поддержки webp
+	
 	function testWebP(callback) {
 		let webP = new Image();
 		webP.onload = webP.onerror = function () {
@@ -17,39 +11,20 @@ export function isWebp() {
 		};
 		webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
 	}
-	// Добавление класса _webp или _no-webp для HTML
+	
 	testWebP(function (support) {
 		let className = support === true ? 'webp' : 'no-webp';
 		document.documentElement.classList.add(className);
 	});
 }
-/* Проверка мобильного браузера */
-export let isMobile = {
-	Android: function () {
-		return navigator.userAgent.match(/Android/i);
-	},
-	BlackBerry: function () {
-		return navigator.userAgent.match(/BlackBerry/i);
-	},
-	iOS: function () {
-		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-	},
-	Opera: function () {
-		return navigator.userAgent.match(/Opera Mini/i);
-	},
-	Windows: function () {
-		return navigator.userAgent.match(/IEMobile/i);
-	},
-	any: function () {
-		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-	}
-};
-/* Добавление класса touch для HTML если браузер мобильный */
+
+export let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
+
 export function addTouchClass() {
-	// Добавление класса _touch для HTML если браузер мобильный
+	
 	if (isMobile.any()) document.documentElement.classList.add('touch');
 }
-// Добавление loaded для HTML после полной загрузки страницы
+
 export function addLoadedClass() {
 	window.addEventListener("load", function () {
 		setTimeout(function () {
@@ -57,23 +32,20 @@ export function addLoadedClass() {
 		}, 0);
 	});
 }
-// Получение хеша в адресе сайта
+
 export function getHash() {
-	if (location.hash) {
-		return location.hash.replace('#', '');
-	}
+	if (location.hash) { return location.hash.replace('#', ''); }
 }
-// Указание хеша в адресе сайта
+
 export function setHash(hash) {
 	hash = hash ? `#${hash}` : window.location.href.split('#')[0];
 	history.pushState('', '', hash);
 }
-// Учет плавающей панели на мобильных устройствах при 100vh
+
 export function fullVHfix() {
 	const fullScreens = document.querySelectorAll('[data-fullscreen]');
 	if (fullScreens.length && isMobile.any()) {
 		window.addEventListener('resize', fixHeight);
-
 		function fixHeight() {
 			let vh = window.innerHeight * 0.01;
 			document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -81,7 +53,7 @@ export function fullVHfix() {
 		fixHeight();
 	}
 }
-// Вспомогательные модули плавного расскрытия и закрытия объекта ======================================================================================================================================================================
+
 export let _slideUp = (target, duration = 500, showmore = 0) => {
 	if (!target.classList.contains('_slide')) {
 		target.classList.add('_slide');
@@ -106,7 +78,7 @@ export let _slideUp = (target, duration = 500, showmore = 0) => {
 			target.style.removeProperty('transition-duration');
 			target.style.removeProperty('transition-property');
 			target.classList.remove('_slide');
-			// Создаем событие 
+			
 			document.dispatchEvent(new CustomEvent("slideUpDone", {
 				detail: {
 					target: target
@@ -141,7 +113,7 @@ export let _slideDown = (target, duration = 500, showmore = 0) => {
 			target.style.removeProperty('transition-duration');
 			target.style.removeProperty('transition-property');
 			target.classList.remove('_slide');
-			// Создаем событие 
+			
 			document.dispatchEvent(new CustomEvent("slideDownDone", {
 				detail: {
 					target: target
@@ -157,7 +129,7 @@ export let _slideToggle = (target, duration = 500) => {
 		return _slideUp(target, duration);
 	}
 }
-// Вспомогательные модули блокировки прокрутки и скочка ====================================================================================================================================================================================================================================================================================
+
 export let bodyLockStatus = true;
 export let bodyLockToggle = (delay = 500) => {
 	if (document.documentElement.classList.contains('lock')) {
@@ -201,34 +173,30 @@ export let bodyLock = (delay = 500) => {
 		}, delay);
 	}
 }
-// Модуль работы со спойлерами =======================================================================================================================================================================================================================
-/*
-Документация по работе в шаблоне: https://template.fls.guru/template-docs/modul-spojlery.html
-Сниппет (HTML): spollers
-*/
+/* Spollers module */
 export function spollers() {
 	const spollersArray = document.querySelectorAll('[data-spollers]');
 	if (spollersArray.length > 0) {
-		// Получение обычных слойлеров
+		
 		const spollersRegular = Array.from(spollersArray).filter(function (item, index, self) {
 			return !item.dataset.spollers.split(",")[0];
 		});
-		// Инициализация обычных слойлеров
+		
 		if (spollersRegular.length) {
 			initSpollers(spollersRegular);
 		}
-		// Получение слойлеров с медиа запросами
+		
 		let mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
 		if (mdQueriesArray && mdQueriesArray.length) {
 			mdQueriesArray.forEach(mdQueriesItem => {
-				// Событие
+				
 				mdQueriesItem.matchMedia.addEventListener("change", function () {
 					initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 				});
 				initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 			});
 		}
-		// Инициализация
+		
 		function initSpollers(spollersArray, matchMedia = false) {
 			spollersArray.forEach(spollersBlock => {
 				spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
@@ -243,7 +211,7 @@ export function spollers() {
 				}
 			});
 		}
-		// Работа с контентом
+		
 		function initSpollerBody(spollersBlock, hideSpollerBody = true) {
 			let spollerTitles = spollersBlock.querySelectorAll('[data-spoller]');
 			if (spollerTitles.length) {
@@ -252,24 +220,15 @@ export function spollers() {
 					if (hideSpollerBody) {
 						spollerTitle.removeAttribute('tabindex');
 						if (!spollerTitle.classList.contains('_spoller-active')) {
-							if (spollerTitle.classList.contains('repair-spollers__item')) {
-								spollerTitle.querySelector('.repair-spollers__body').hidden = true;
-							} else {
-								spollerTitle.nextElementSibling.hidden = true;
-							}
+							spollerTitle.nextElementSibling.hidden = true;
 						}
 					} else {
 						spollerTitle.setAttribute('tabindex', '-1');
-						if (spollerTitle.classList.contains('repair-spollers__item')) {
-							spollerTitle.querySelector('.repair-spollers__body').hidden = false;
-						} else {
-							spollerTitle.nextElementSibling.hidden = false;
-						}
+						spollerTitle.nextElementSibling.hidden = false;
 					}
 				});
 			}
 		}
-
 		function setSpollerAction(e) {
 			const el = e.target;
 			if (el.closest('[data-spoller]')) {
@@ -282,29 +241,20 @@ export function spollers() {
 						hideSpollersBody(spollersBlock);
 					}
 					spollerTitle.classList.toggle('_spoller-active');
-					if (spollerTitle.classList.contains('repair-spollers__item')) {
-						_slideToggle(spollerTitle.querySelector('.repair-spollers__body'), spollerSpeed);
-					} else {
-						_slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
-					}
+					_slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
 				}
 				e.preventDefault();
 			}
 		}
-
 		function hideSpollersBody(spollersBlock) {
 			const spollerActiveTitle = spollersBlock.querySelector('[data-spoller]._spoller-active');
 			const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
 			if (spollerActiveTitle && !spollersBlock.querySelectorAll('._slide').length) {
 				spollerActiveTitle.classList.remove('_spoller-active');
-				if (spollerTitle.classList.contains('repair-spollers__item')) {
-					_slideUp(spollerTitle.querySelector('.repair-spollers__body'), spollerSpeed);
-				} else {
-					_slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
-				}
+				_slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
 			}
 		}
-		// Закрытие при клике вне спойлера
+		
 		const spollersClose = document.querySelectorAll('[data-spoller-close]');
 		if (spollersClose.length) {
 			document.addEventListener("click", function (e) {
@@ -315,11 +265,7 @@ export function spollers() {
 						if (spollersBlock.classList.contains('_spoller-init')) {
 							const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
 							spollerClose.classList.remove('_spoller-active');
-							if (spollerTitle.classList.contains('repair-spollers__item')) {
-								_slideUp(spollerTitle.querySelector('.repair-spollers__body'), spollerSpeed);
-							} else {
-								_slideUp(spollerClose.nextElementSibling, spollerSpeed);
-							}
+							_slideUp(spollerClose.nextElementSibling, spollerSpeed);
 						}
 					});
 				}
@@ -327,11 +273,7 @@ export function spollers() {
 		}
 	}
 }
-// Модуь работы с табами =======================================================================================================================================================================================================================
-/*
-Документация по работе в шаблоне: https://template.fls.guru/template-docs/modul-taby.html
-Сниппет (HTML): tabs
-*/
+/* Tabs module */
 export function tabs() {
 	const tabs = document.querySelectorAll('[data-tabs]');
 	let tabsActiveHash = [];
@@ -348,7 +290,7 @@ export function tabs() {
 			initTabs(tabsBlock);
 		});
 
-		// Получение слойлеров с медиа запросами
+
 		let mdQueriesArray = dataMediaQueries(tabs, "tabs");
 		if (mdQueriesArray && mdQueriesArray.length) {
 			mdQueriesArray.forEach(mdQueriesItem => {
@@ -360,7 +302,7 @@ export function tabs() {
 			});
 		}
 	}
-	// Установка позиций заголовков
+
 	function setTitlePosition(tabsMediaArray, matchMedia) {
 		tabsMediaArray.forEach(tabsMediaItem => {
 			tabsMediaItem = tabsMediaItem.item;
@@ -382,7 +324,7 @@ export function tabs() {
 			});
 		});
 	}
-	// Работа с контентом
+
 	function initTabs(tabsBlock) {
 		let tabsTitles = tabsBlock.querySelectorAll('[data-tabs-titles]>*');
 		let tabsContent = tabsBlock.querySelectorAll('[data-tabs-body]>*');
@@ -407,12 +349,10 @@ export function tabs() {
 			});
 		}
 	}
-
 	function setTabsStatus(tabsBlock) {
 		let tabsTitles = tabsBlock.querySelectorAll('[data-tabs-title]');
 		let tabsContent = tabsBlock.querySelectorAll('[data-tabs-item]');
 		const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
-
 		function isTabsAnamate(tabsBlock) {
 			if (tabsBlock.hasAttribute('data-tabs-animate')) {
 				return tabsBlock.dataset.tabsAnimate > 0 ? Number(tabsBlock.dataset.tabsAnimate) : 500;
@@ -443,7 +383,6 @@ export function tabs() {
 			});
 		}
 	}
-
 	function setTabsAction(e) {
 		const el = e.target;
 		if (el.closest('[data-tabs-title]')) {
@@ -460,118 +399,80 @@ export function tabs() {
 		}
 	}
 }
-// Модуль работы с меню (бургер) =======================================================================================================================================================================================================================
-/*
-Документация по работе в шаблоне: https://template.fls.guru/template-docs/menu-burger.html
-Сниппет (HTML): menu
-*/
+/* Mobile menu (burger) */
 export function menuInit() {
-	if (document.querySelector(".menu__icon")) {
+	if (document.querySelector(".icon-menu")) {
 		document.addEventListener("click", function (e) {
-			if (bodyLockStatus && e.target.closest('.menu__icon')) {
-				document.documentElement.classList.toggle("menu-open");
+			if (bodyLockStatus && e.target.closest('.icon-menu')) {
 				bodyLockToggle();
-				if (document.documentElement.classList.contains("show-menu")) {
-					document.documentElement.classList.remove("show-menu");
-				} else {
-					setTimeout(() => {
-						document.documentElement.classList.add("show-menu");
-					}, 550);
-				}
-				if (document.documentElement.classList.contains("menu-open")) {
-					requestAnimationFrame(() => {
-						locomotiveScroll.stop();
-						console.log('stop');
-					});
-				} else {
-					requestAnimationFrame(() => {
-						locomotiveScroll.start();
-						console.log('start');
-					});
-				}
+				document.documentElement.classList.toggle("menu-open");
 			}
 		});
 	};
 }
 export function menuOpen() {
 	bodyLock();
-	// Starting the locomotive scroll on the next frame
-	requestAnimationFrame(() => {
-		locomotiveScroll.stop();
-	});
 	document.documentElement.classList.add("menu-open");
 }
 export function menuClose() {
 	bodyUnlock();
-	// Starting the locomotive scroll on the next frame
-
-	requestAnimationFrame(() => {
-		locomotiveScroll.start();
-	});
-	// document.documentElement.classList.remove("menu-open");
+	document.documentElement.classList.remove("menu-open");
 }
-// Sublist в меню
+/* Sublist in menu */
 export function menuSublistsInit() {
 	const subLists = document.querySelectorAll('.menu__sublist');
 
-	function hideAllSublists() {
-		subLists.forEach(element => {
-			/* _slideUp(element); */
-		});
-	}
-	document.addEventListener("click", function (e) {
-		let target = e.target;
+	if (document.documentElement.classList.contains('touch')) {
+		function hideAllSublists() {
+			subLists.forEach(element => {
+				element.setAttribute('hidden', '');
+			});
+		}
+		document.addEventListener("click", function (e) {
+			let target = e.target;
 
-		if (target.closest('.menu__item')) {
-			let sublist = target.closest('.menu__item').querySelector('.menu__sublist');
+			if (target.closest('.menu__item')) {
+				let sublist = target.closest('.menu__item').querySelector('.menu__sublist');
 
-			if (!sublist.hasAttribute('hidden')) {
-				_slideToggle(sublist);
+				if (!sublist.hasAttribute('hidden')) {
+					_slideToggle(sublist);
+				} else {
+					hideAllSublists();
+					_slideToggle(sublist);
+				}
+
 			} else {
 				hideAllSublists();
-				_slideToggle(sublist);
 			}
-			target.closest('.menu__item').classList.toggle('active');
-
-		} else {
-			hideAllSublists();
-		}
-	});
-
-	if (document.documentElement.classList.contains('touch')) {
-
+		});
 	} else {
-		/* subLists.forEach(element => {
+		subLists.forEach(element => {
 			element.removeAttribute('hidden');
-		}); */
+		});
 	}
 }
-// Модуль "показать еще" =======================================================================================================================================================================================================================
-/*
-Документация по работе в шаблоне: https://template.fls.guru/template-docs/modul-pokazat-eshhjo.html
-Сниппет (HTML): showmore
-*/
+/* Show more module */
 export function showMore() {
 	window.addEventListener("load", function (e) {
 		const showMoreBlocks = document.querySelectorAll('[data-showmore]');
 		let showMoreBlocksRegular;
 		let mdQueriesArray;
 		if (showMoreBlocks.length) {
-			// Получение обычных объектов
+			
 			showMoreBlocksRegular = Array.from(showMoreBlocks).filter(function (item, index, self) {
 				return !item.dataset.showmoreMedia;
 			});
-			// Инициализация обычных объектов
+			
 			showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null;
 
 			document.addEventListener("click", showMoreActions);
 			window.addEventListener("resize", showMoreActions);
 
-			// Получение объектов с медиа запросами
+			
 			mdQueriesArray = dataMediaQueries(showMoreBlocks, "showmoreMedia");
 			if (mdQueriesArray && mdQueriesArray.length) {
 				mdQueriesArray.forEach(mdQueriesItem => {
-					// Событие
+					
 					mdQueriesItem.matchMedia.addEventListener("change", function () {
 						initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 					});
@@ -579,19 +480,16 @@ export function showMore() {
 				initItemsMedia(mdQueriesArray);
 			}
 		}
-
 		function initItemsMedia(mdQueriesArray) {
 			mdQueriesArray.forEach(mdQueriesItem => {
 				initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
 			});
 		}
-
 		function initItems(showMoreBlocks, matchMedia) {
 			showMoreBlocks.forEach(showMoreBlock => {
 				initItem(showMoreBlock, matchMedia);
 			});
 		}
-
 		function initItem(showMoreBlock, matchMedia = false) {
 			showMoreBlock = matchMedia ? showMoreBlock.item : showMoreBlock;
 			let showMoreContent = showMoreBlock.querySelectorAll('[data-showmore-content]');
@@ -601,7 +499,7 @@ export function showMore() {
 			const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
 			if (matchMedia.matches || !matchMedia) {
 				if (hiddenHeight < getOriginalHeight(showMoreContent)) {
-					_slideUp(showMoreContent, 0, showMoreBlock.classList.contains('_showmore-active') ? getOriginalHeight(showMoreContent) : hiddenHeight);
+					_slideUp(showMoreContent, 0, hiddenHeight);
 					showMoreButton.hidden = false;
 				} else {
 					_slideDown(showMoreContent, 0, hiddenHeight);
@@ -612,30 +510,23 @@ export function showMore() {
 				showMoreButton.hidden = true;
 			}
 		}
-
 		function getHeight(showMoreBlock, showMoreContent) {
 			let hiddenHeight = 0;
 			const showMoreType = showMoreBlock.dataset.showmore ? showMoreBlock.dataset.showmore : 'size';
-			const rowGap = parseFloat(getComputedStyle(showMoreContent).rowGap) ? parseFloat(getComputedStyle(showMoreContent).rowGap) : 0;
 			if (showMoreType === 'items') {
 				const showMoreTypeValue = showMoreContent.dataset.showmoreContent ? showMoreContent.dataset.showmoreContent : 3;
 				const showMoreItems = showMoreContent.children;
 				for (let index = 1; index < showMoreItems.length; index++) {
 					const showMoreItem = showMoreItems[index - 1];
-					const marginTop = parseFloat(getComputedStyle(showMoreItem).marginTop) ? parseFloat(getComputedStyle(showMoreItem).marginTop) : 0;
-					const marginBottom = parseFloat(getComputedStyle(showMoreItem).marginBottom) ? parseFloat(getComputedStyle(showMoreItem).marginBottom) : 0;
-					hiddenHeight += showMoreItem.offsetHeight + marginTop;
-					if (index == showMoreTypeValue) break;
-					hiddenHeight += marginBottom;
+					hiddenHeight += showMoreItem.offsetHeight;
+					if (index == showMoreTypeValue) break
 				}
-				rowGap ? hiddenHeight += (showMoreTypeValue - 1) * rowGap : null;
 			} else {
 				const showMoreTypeValue = showMoreContent.dataset.showmoreContent ? showMoreContent.dataset.showmoreContent : 150;
 				hiddenHeight = showMoreTypeValue;
 			}
 			return hiddenHeight;
 		}
-
 		function getOriginalHeight(showMoreContent) {
 			let parentHidden;
 			let hiddenHeight = showMoreContent.offsetHeight;
@@ -649,7 +540,6 @@ export function showMore() {
 			showMoreContent.style.height = `${hiddenHeight}px`;
 			return originalHeight;
 		}
-
 		function showMoreActions(e) {
 			const targetEvent = e.target;
 			const targetType = e.type;
@@ -672,50 +562,7 @@ export function showMore() {
 		}
 	});
 }
-export function rippleEffect() {
 
-	document.addEventListener("click", function (e) {
-		const targetItem = e.target;
-		if (targetItem.closest('[data-ripple]')) {
-
-			const button = targetItem.closest('[data-ripple]');
-			const ripple = document.createElement('span');
-			const diameter = Math.max(button.clientWidth, button.clientHeight);
-			const radius = diameter / 2;
-
-
-			ripple.style.width = ripple.style.height = `${diameter}px`;
-			ripple.style.left = `${e.pageX - (button.getBoundingClientRect().left + scrollX) - radius}px`;
-			ripple.style.top = `${e.pageY - (button.getBoundingClientRect().top + scrollY) - radius}px`;
-			ripple.classList.add('ripple');
-
-
-			button.dataset.ripple === 'once' && button.querySelector('.ripple') ?
-				button.querySelector('.ripple').remove() : null;
-
-
-			button.appendChild(ripple);
-
-			// Отримання часу дії анімації
-			const timeOut = getAnimationDuration(ripple);
-
-
-			setTimeout(() => {
-				ripple ? ripple.remove() : null;
-			}, timeOut);
-
-
-			function getAnimationDuration() {
-				const aDuration = window.getComputedStyle(ripple).animationDuration;
-				return aDuration.includes('ms') ?
-					aDuration.replace("ms", '') : aDuration.replace("s", '') * 1000;
-			}
-		}
-	});
-}
-//================================================================================================================================================================================================================================================================================================================
-// Прочие полезные функции ================================================================================================================================================================================================================================================================================================================
-//================================================================================================================================================================================================================================================================================================================
 // FLS (Full Logging System)
 export function FLS(message) {
 	setTimeout(() => {
@@ -724,44 +571,40 @@ export function FLS(message) {
 		}
 	}, 0);
 }
-// Получить цифры из строки
+
 export function getDigFromString(item) {
 	return parseInt(item.replace(/[^\d]/g, ''))
 }
-// Форматирование цифр типа 100 000 000
+
 export function getDigFormat(item) {
 	return item.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ");
 }
-// Убрать класс из всех элементов массива
+
 export function removeClasses(array, className) {
 	for (var i = 0; i < array.length; i++) {
 		array[i].classList.remove(className);
 	}
 }
-// Уникализация массива
+
 export function uniqArray(array) {
 	return array.filter(function (item, index, self) {
 		return self.indexOf(item) === index;
 	});
 }
-// Функция получения индекса внутри родителя
+
 export function indexInParent(parent, element) {
 	const array = Array.prototype.slice.call(parent.children);
 	return Array.prototype.indexOf.call(array, element);
 };
 
-export function isHidden(el) {
-	return (el.offsetParent === null)
-}
-// Обработа медиа запросов из атрибутов 
 export function dataMediaQueries(array, dataSetValue) {
-	// Получение объектов с медиа запросами
+	
 	const media = Array.from(array).filter(function (item, index, self) {
 		if (item.dataset[dataSetValue]) {
 			return item.dataset[dataSetValue].split(",")[0];
 		}
 	});
-	// Инициализация объектов с медиа запросами
+	
 	if (media.length) {
 		const breakpointsArray = [];
 		media.forEach(item => {
@@ -773,7 +616,7 @@ export function dataMediaQueries(array, dataSetValue) {
 			breakpoint.item = item;
 			breakpointsArray.push(breakpoint);
 		});
-		// Получаем уникальные брейкпоинты
+		
 		let mdQueries = breakpointsArray.map(function (item) {
 			return '(' + item.type + "-width: " + item.value + "px)," + item.value + ',' + item.type;
 		});
@@ -781,13 +624,13 @@ export function dataMediaQueries(array, dataSetValue) {
 		const mdQueriesArray = [];
 
 		if (mdQueries.length) {
-			// Работаем с каждым брейкпоинтом
+			
 			mdQueries.forEach(breakpoint => {
 				const paramsArray = breakpoint.split(",");
 				const mediaBreakpoint = paramsArray[1];
 				const mediaType = paramsArray[2];
 				const matchMedia = window.matchMedia(paramsArray[0]);
-				// Объекты с нужными условиями
+				
 				const itemsArray = breakpointsArray.filter(function (item) {
 					if (item.value === mediaBreakpoint && item.type === mediaType) {
 						return true;
@@ -802,4 +645,3 @@ export function dataMediaQueries(array, dataSetValue) {
 		}
 	}
 }
-//================================================================================================================================================================================================================================================================================================================

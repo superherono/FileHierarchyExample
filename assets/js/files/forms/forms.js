@@ -1,19 +1,26 @@
-// Подключение функционала "Чертогов Фрилансера"
-// Подключение списка активных модулей
-import { flsModules } from "../modules.js";
-// Вспомогательные функции
-import { isMobile, _slideUp, _slideDown, _slideToggle, FLS } from "../functions.js";
-// Модуль прокрутки к блоку
-import { gotoBlock } from "../scroll/gotoblock.js";
-//================================================================================================================================================================================================================================================================================================================================
+import {
+	flsModules
+} from "../modules.js";
 
-/*
-Документация: https://template.fls.guru/template-docs/rabota-s-formami.html
-*/
+import {
+	isMobile,
+	_slideUp,
+	_slideDown,
+	_slideToggle,
+	FLS
+} from "../functions.js";
 
-// Работа с полями формы. Добавление классов, работа с placeholder
-export function formFieldsInit(options = { viewPass: false, autoHeight: false }) {
-	// Если включено, добавляем функционал "скрыть плейсходлер при фокусе"
+import {
+	gotoBlock
+} from "../scroll/gotoblock.js";
+
+
+
+export function formFieldsInit(options = {
+	viewPass: false,
+	autoHeight: false
+}) {
+	
 	const formFields = document.querySelectorAll('input[placeholder],textarea[placeholder]');
 	if (formFields.length) {
 		formFields.forEach(formField => {
@@ -45,13 +52,13 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 				targetElement.classList.remove('_form-focus');
 				targetElement.parentElement.classList.remove('_form-focus');
 			}
-			// Моментальная валидация
+			
 			if (targetElement.hasAttribute('data-validate')) {
 				formValidate.validateInput(targetElement);
 			}
 		}
 	});
-	// Если включено, добавляем функционал "Показать пароль"
+	
 	if (options.viewPass) {
 		document.addEventListener("click", function (e) {
 			let targetElement = e.target;
@@ -62,7 +69,7 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			}
 		});
 	}
-	// Если включено, добавляем функционал "Автовысота"
+	
 	if (options.autoHeight) {
 		const textareas = document.querySelectorAll('textarea[data-autoheight]');
 		if (textareas.length) {
@@ -79,13 +86,14 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 					}
 				});
 			});
+
 			function setHeight(textarea, height) {
 				textarea.style.height = `${height}px`;
 			}
 		}
 	}
 }
-// Валидация форм
+
 export let formValidate = {
 	getErrors(form) {
 		let error = 0;
@@ -170,7 +178,7 @@ export let formValidate = {
 		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
 	}
 }
-/* Отправка форм */
+
 export function formSubmit() {
 	const forms = document.forms;
 	if (forms.length) {
@@ -189,7 +197,15 @@ export function formSubmit() {
 		const error = !form.hasAttribute('data-no-validate') ? formValidate.getErrors(form) : 0;
 		if (error === 0) {
 			const ajax = form.hasAttribute('data-ajax');
-			if (ajax) { // Если режим ajax
+			if (form.hasAttribute('data-dev')) {
+				e.preventDefault();
+				form.classList.add('loading');
+				setTimeout(() => {
+					form.classList.remove('loading');
+					formSent(form);
+				}, 3000);
+
+			} else if (ajax) {
 				e.preventDefault();
 				const formAction = form.getAttribute('action') ? form.getAttribute('action').trim() : '#';
 				const formMethod = form.getAttribute('method') ? form.getAttribute('method').trim() : 'GET';
@@ -208,9 +224,6 @@ export function formSubmit() {
 					alert("Ошибка");
 					form.classList.remove('_sending');
 				}
-			} else if (form.hasAttribute('data-dev')) {	// Если режим разработки
-				e.preventDefault();
-				formSent(form);
 			}
 		} else {
 			e.preventDefault();
@@ -220,156 +233,29 @@ export function formSubmit() {
 			}
 		}
 	}
-	// Действия после отправки формы
+	
 	function formSent(form, responseResult = ``) {
-		// Создаем событие отправки формы
+		
 		document.dispatchEvent(new CustomEvent("formSent", {
 			detail: {
 				form: form
 			}
 		}));
-		// Показываем попап, если подключен модуль попапов 
-		// и для формы указана настройка
+
 		setTimeout(() => {
 			if (flsModules.popup) {
 				const popup = form.dataset.popupMessage;
 				popup ? flsModules.popup.open(popup) : null;
 			}
 		}, 0);
-		// Очищаем форму
+
 		formValidate.formClean(form);
-		// Сообщаем в консоль
+
 		formLogging(`Форма отправлена!`);
 	}
+
 	function formLogging(message) {
-		FLS(`[Формы]: ${message}`);
+		FLS(`[Forms]: ${message}`);
 	}
 }
-/* Модуь формы "колличество" */
-export function formQuantity() {
-	document.addEventListener("click", function (e) {
-		let targetElement = e.target;
-		if (targetElement.closest('[data-quantity-plus]') || targetElement.closest('[data-quantity-minus]')) {
-			const valueElement = targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]');
-			let value = parseInt(valueElement.value);
-			if (targetElement.hasAttribute('data-quantity-plus')) {
-				value++;
-				if (+valueElement.dataset.quantityMax && +valueElement.dataset.quantityMax < value) {
-					value = valueElement.dataset.quantityMax;
-				}
-			} else {
-				--value;
-				if (+valueElement.dataset.quantityMin) {
-					if (+valueElement.dataset.quantityMin > value) {
-						value = valueElement.dataset.quantityMin;
-					}
-				} else if (value < 1) {
-					value = 1;
-				}
-			}
-			targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]').value = value;
-		}
-	});
-}
-/* Модуь звездного рейтинга */
-export function formRating() {
-	const ratings = document.querySelectorAll('.rating');
-	if (ratings.length > 0) {
-		initRatings();
-	}
-	// Основная функция
-	function initRatings() {
-		let ratingActive, ratingValue;
-		// "Бегаем" по всем рейтингам на странице
-		for (let index = 0; index < ratings.length; index++) {
-			const rating = ratings[index];
-			initRating(rating);
-		}
-		// Инициализируем конкретный рейтинг
-		function initRating(rating) {
-			initRatingVars(rating);
 
-			setRatingActiveWidth();
-
-			if (rating.classList.contains('rating_set')) {
-				setRating(rating);
-			}
-		}
-		// Инициализайция переменных
-		function initRatingVars(rating) {
-			ratingActive = rating.querySelector('.rating__active');
-			ratingValue = rating.querySelector('.rating__value');
-		}
-		// Изменяем ширину активных звезд
-		function setRatingActiveWidth(index = ratingValue.innerHTML) {
-			const ratingActiveWidth = index / 0.05;
-			ratingActive.style.width = `${ratingActiveWidth}%`;
-		}
-		// Возможность указать оценку 
-		function setRating(rating) {
-			const ratingItems = rating.querySelectorAll('.rating__item');
-			for (let index = 0; index < ratingItems.length; index++) {
-				const ratingItem = ratingItems[index];
-				ratingItem.addEventListener("mouseenter", function (e) {
-					// Обновление переменных
-					initRatingVars(rating);
-					// Обновление активных звезд
-					setRatingActiveWidth(ratingItem.value);
-				});
-				ratingItem.addEventListener("mouseleave", function (e) {
-					// Обновление активных звезд
-					setRatingActiveWidth();
-				});
-				ratingItem.addEventListener("click", function (e) {
-					// Обновление переменных
-					initRatingVars(rating);
-
-					if (rating.dataset.ajax) {
-						// "Отправить" на сервер
-						setRatingValue(ratingItem.value, rating);
-					} else {
-						// Отобразить указанную оцнку
-						ratingValue.innerHTML = index + 1;
-						setRatingActiveWidth();
-					}
-				});
-			}
-		}
-		async function setRatingValue(value, rating) {
-			if (!rating.classList.contains('rating_sending')) {
-				rating.classList.add('rating_sending');
-
-				// Отправика данных (value) на сервер
-				let response = await fetch('rating.json', {
-					method: 'GET',
-
-					//body: JSON.stringify({
-					//	userRating: value
-					//}),
-					//headers: {
-					//	'content-type': 'application/json'
-					//}
-
-				});
-				if (response.ok) {
-					const result = await response.json();
-
-					// Получаем новый рейтинг
-					const newRating = result.newRating;
-
-					// Вывод нового среднего результата
-					ratingValue.innerHTML = newRating;
-
-					// Обновление активных звезд
-					setRatingActiveWidth();
-
-					rating.classList.remove('rating_sending');
-				} else {
-					alert("Ошибка");
-
-					rating.classList.remove('rating_sending');
-				}
-			}
-		}
-	}
-}

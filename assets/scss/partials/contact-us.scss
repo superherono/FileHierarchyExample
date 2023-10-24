@@ -1,0 +1,99 @@
+.contact-us {
+    position: relative;
+
+    background: var(--gradient-dark);
+
+    @include adaptiveValue("padding-bottom", 250, 100, 0, 1300, 650);
+    @include adaptiveValue("padding-top", 150, 80, 0, 1300, 650);
+
+    .page--about-us & {
+        @include adaptiveValue("padding-bottom", 150, 80, 0, 1300, 650);
+        @include adaptiveValue("padding-top", 120, 60, 0, 1300, 650);
+    }
+
+    // .contact-us__container
+    &__container {}
+
+    // .contact-us__body
+    &__body {
+
+        @media (min-width:$md1) {
+            grid-template-columns: 485px 500px;
+        }
+
+        @media (min-width:$md2) {
+            display: grid;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        @media (min-width:$md2) and (max-width:$md1) {
+            grid-template-columns: percent(510, 1120) percent(525, 1120);
+        }
+    }
+
+    // .contact-us__info
+    &__info {
+        @media (min-width:$md2) {
+            padding-top: 30px;
+        }
+
+        @media (max-width:$md2) {
+            margin-bottom: 60px;
+        }
+    }
+
+    // .contact-us__suptitle
+    &__suptitle {}
+
+    // .contact-us__title
+    &__title {
+        margin-bottom: 20px;
+
+        color: var(--white-pure);
+        letter-spacing: -0.01em;
+        font-size: 48px;
+        line-height: math.div(60, 48);
+        font-weight: 600;
+    }
+
+    // .contact-us__descr
+    &__descr {
+        line-height: math.div(33, 21);
+        opacity: .8;
+
+        span {
+            @media (max-width:$md3) {
+                display: none;
+            }
+        }
+    }
+
+    // .contact-us__form
+    &__form {
+        @media (max-width:$md2) {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    }
+
+    &__shape {
+        opacity: 0;
+
+        transition: opacity .6s ease;
+
+        &._watcher-view {
+            opacity: 1;
+        }
+
+        @media (min-width:$md5) {
+            position: absolute;
+            top: 100px;
+            left: -130px;
+        }
+
+        @media (max-width:$md5) {
+            display: none;
+        }
+    }
+}

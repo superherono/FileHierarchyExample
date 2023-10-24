@@ -102,7 +102,7 @@ class Popup {
 		this.options.init ? this.initPopups() : null
 	}
 	initPopups() {
-		this.popupLogging(`Проснулся`);
+		this.popupLogging(`Wake up`);
 		this.eventsPopup();
 	}
 	eventsPopup() {
@@ -125,7 +125,7 @@ class Popup {
 					this.open();
 					return;
 
-				} else this.popupLogging(`Ой ой, не заполнен атрибут у ${buttonOpen.classList}`);
+				} else this.popupLogging(`Oops, not filled attribute at ${buttonOpen.classList}`);
 
 				return;
 			}
@@ -250,9 +250,9 @@ class Popup {
 						popup: this
 					}
 				}));
-				this.popupLogging(`Открыл попап`);
+				this.popupLogging(`Opened a popup`);
 
-			} else this.popupLogging(`Ой ой, такого попапа нет.Проверьте корректность ввода. `);
+			} else this.popupLogging(`Oops, no such popup. `);
 		}
 	}
 	close(selectorValue) {
@@ -304,7 +304,7 @@ class Popup {
 			this._focusTrap();
 		}, 50);
 
-		this.popupLogging(`Закрыл попап`);
+		this.popupLogging(`Closed the popup`);
 	}
 	// Получение хэша 
 	_getHash() {
@@ -352,8 +352,12 @@ class Popup {
 	}
 	// Функция вывода в консоль
 	popupLogging(message) {
-		this.options.logging ? FLS(`[Попапос]: ${message}`) : null;
+		this.options.logging ? FLS(`[Popup]: ${message}`) : null;
 	}
 }
 // Запускаем и добавляем в объект модулей
-flsModules.popup = new Popup({});
+window.addEventListener("load", function () {
+	setTimeout(function () {
+		flsModules.popup = new Popup({});
+	}, 0);
+});

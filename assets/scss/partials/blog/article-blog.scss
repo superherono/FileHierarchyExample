@@ -1,0 +1,116 @@
+.article-blog {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 30px 30px 50px;
+
+    border-radius: 20px;
+
+
+    &.blog__item {
+        background-color: var(--blue);
+    }
+
+    .single-blog-post__blog &,
+    &.blog-articles__item {
+        background-color: var(--white-pure);
+    }
+
+    .blog--fleet & {
+        background-color: var(--blue-lightest);
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            img {
+                transform: scale(1.02) rotate(1deg);
+            }
+        }
+    }
+
+    // .article-blog__image
+    &__image {
+        margin-bottom: 30px;
+
+        border-radius: 20px;
+        overflow: hidden;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+
+            transition: transform .4s ease;
+        }
+    }
+
+    // .article-blog__info
+    &__info {
+        flex: 1 1 auto;
+        margin-bottom: 10px;
+
+        font-size: 18px;
+        line-height: math.div(28, 18);
+        letter-spacing: -0.01em;
+    }
+
+    // .article-blog__data
+    &__data {
+        color: #d8dcee;
+
+        .blog--fleet & {
+            color: var(--secondary);
+            opacity: 0.7;
+        }
+
+        .single-blog-post__blog &,
+        .blog-articles__item & {
+            color: var(--blue);
+        }
+    }
+
+    // .article-blog__title
+    &__title {
+        margin-bottom: 10px;
+
+        font-size: 24px;
+        line-height: math.div(36, 24);
+        font-weight: 600;
+        color: var(--white-pure);
+
+        .single-blog-post__blog &,
+        .blog-articles__item &,
+        .blog--fleet & {
+            color: var(--secondary);
+        }
+
+    }
+
+    // .article-blog__link
+    &__link {
+        font-size: 18px;
+        line-height: math.div(28, 18);
+        color: var(--white-pure);
+        letter-spacing: -0.01em;
+        transition: color .4s ease;
+
+        .single-blog-post__blog &,
+        .blog-articles__item & {
+            color: var(--blue);
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: var(--orange);
+            }
+        }
+    }
+
+    &__tag {
+        font-size: 18px;
+        line-height: math.div(28, 18);
+
+        letter-spacing: -0.01em;
+        opacity: .7;
+    }
+}

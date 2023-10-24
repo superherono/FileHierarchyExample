@@ -1,43 +1,28 @@
-<!doctype html>
-<html lang="ru">
-	@@include('html/_head.htm',{ "title":"Главная" })
+<!DOCTYPE html>
+<html lang="en">
 
-	<body>
-		@@include('components/_preloader.htm',{})
+@@include('html/_head.htm',{
+"title":"Home"
+})
 
-		<div class="wrapper wrapper--home" data-scroll-container>
-			<!-- prettier-ignore -->
-			@@include('html/_header.htm',{})
-
-			<main class="page">
-				<!-- prettier-ignore -->
-				@@include('sections/home/hero/_index.htm',{})
-
-				@@include('sections/home/about/_index.htm',{})
-
-				@@include('sections/home/benefits/_index.htm',{})
-
-				@@include('sections/home/portfolio/_index.htm',{})
-
-				<section class="page__decor decor decor--border-radius decor--dark-bg" data-fullscreen>
-					<img src="@img/decor-sec.jpg" width="1920" height="1080" alt="Awesome image" loading="lazy" decoding="async" />
-				</section>
-				<!-- /.decor -->
-				<!-- prettier-ignore -->
-				@@include('sections/home/services/_index.htm',{})
-
-				@@include('sections/home/team/_index.htm',{})
-
-				<section class="page__team-photo">
-					<img src="@img/team.jpg" width="1920" height="1154" alt="Awesome image" loading="lazy" decoding="async" />
-				</section>
-				<!-- /.decor -->
-				<!-- prettier-ignore -->
-				@@include('html/_footer.htm',{})
-			</main>
-		</div>
-		<!-- prettier-ignore -->
-		@@include('html/_popup.htm',{})
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+			@@include('html/partials/home/_hero.htm',{})
+			@@include('html/partials/home/_services.htm',{})
+			@@include('html/partials/home/_about.htm',{})
+			@@include('html/partials/home/_steps.htm',{})
+			@@include('html/partials/home/_featured-project.htm',{})
+			@@include('html/partials/home/_partners.htm',{})
+			@@include('html/partials/home/_contact-us.htm',{})
+			@@include('html/partials/home/_blog.htm',{})
+			@@include('html/partials/home/_whitepaper.htm',{})
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
 	@@include('html/_js.htm',{})
-	</body>
+</body>
+
 </html>

@@ -1,0 +1,130 @@
+.subscribe {
+
+    // .subscribe__container
+    &__container {}
+
+    // .subscribe__body
+    &__body {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    // .subscribe__icon
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width:$md3) {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 30px;
+        }
+
+        @media (max-width:$md3) {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+        }
+    }
+
+    // .subscribe__title
+    &__title {
+        margin-bottom: 10px;
+
+        color: var(--blue);
+
+        @media (max-width:$md3) {
+            text-align: left;
+            max-width: 500px;
+        }
+    }
+
+    // .subscribe__descr
+    &__descr {
+        line-height: math.div(33, 21);
+        letter-spacing: math.div(-0.21px, 21px) * 1em;
+
+        color: var(--blue);
+        opacity: .7;
+
+        @media (min-width:$md3) {
+            margin-bottom: 50px;
+
+            text-align: center;
+        }
+
+        @media (max-width:$md3) {
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+    }
+
+    // .subscribe__form
+    &__form {
+        @media (min-width:$md3) {
+            max-width: 640px;
+            margin: 0 auto 20px;
+        }
+
+        @media (max-width:$md3) {
+            margin-bottom: 20px;
+        }
+    }
+
+    // .subscribe__row
+    &__row {
+        @media (min-width:$md3) {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+
+    // .subscribe__input
+    &__input {
+        @media (min-width:$md3) {
+            flex: 0 1 333px;
+        }
+
+        @media (max-width:$md3) {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .input {
+            background-color: #eef0f2;
+        }
+    }
+
+    // .subscribe__button
+    &__button {
+        @media (min-width:$md3) {
+            flex: 0 1 301px;
+        }
+
+        @media (max-width:$md3) {
+            display: flex;
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    // .subscribe__text
+    &__text {
+        font-size: 14px;
+        line-height: 140%;
+        color: var(--blue);
+
+        @media (min-width:$md3) {
+            text-align: center;
+        }
+    }
+}
+
+.input {}

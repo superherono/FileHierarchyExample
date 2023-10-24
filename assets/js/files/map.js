@@ -1,108 +1,132 @@
-//Получить координаты:
-//http://dimik.github.io/ymaps/examples/location-tool/
 
-//LazyMap
-
-function init() {
-	let center = [55.649154, 37.881147];
-	let map = new ymaps.Map('map', {
-		center: center,
-		zoom: 16,
-	});
-	let placemark = new ymaps.Placemark(center, {
-		// balloonContent: 'г. Ростов-на-Дону, ул. 26 Линия, 11',
-	}, {
-		iconLayout: 'default#image',
-		// iconCaption: 'г. Ростов-на-Дону, ул. 26 Линия, 11',
-		// iconImageHref: 'img/icons/pin.svg',
-		// iconImageSize: [80, 80],
-		// iconImageOffset: [-19, -84],
-		// preset: 'islands#redHomeIcon'
-
-	});
-
-	map.controls.remove('geolocationControl'); // удаляем геолокацию
-	map.controls.remove('searchControl'); // удаляем поиск
-	map.controls.remove('trafficControl'); // удаляем контроль трафика
-	map.controls.remove('typeSelector'); // удаляем тип
-	map.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-	map.controls.remove('zoomControl'); // удаляем контрол зуммирования
-	map.controls.remove('rulerControl'); // удаляем контрол правил
-	map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
-	map.geoObjects.add(placemark);
+function mapAdd() {
+	let tag = document.createElement('script');
+	tag.src = "https://maps.google.com/maps/api/js?sensor=false&amp;key=&callback=mapInit";
+	let firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 }
-
-function initYandexMap() {
-	if (window.yandexMapDidInit) {
-		return false;
+function mapInit(n = 1) {
+	google.maps.Map.prototype.setCenterWithOffset = function (latlng, offsetX, offsetY) {
+		var map = this;
+		var ov = new google.maps.OverlayView();
+		ov.onAdd = function () {
+			var proj = this.getProjection();
+			var aPoint = proj.fromLatLngToContainerPixel(latlng);
+			aPoint.x = aPoint.x + offsetX;
+			aPoint.y = aPoint.y + offsetY;
+			map.panTo(proj.fromContainerPixelToLatLng(aPoint));
+			//map.setCenter(proj.fromContainerPixelToLatLng(aPoint));
+		}
+		ov.draw = function () { };
+		ov.setMap(this);
+	};
+	var markers = new Array();
+	var infowindow = new google.maps.InfoWindow({
+		//pixelOffset: new google.maps.Size(-230,250)
+	});
+	var locations = [
+		[new google.maps.LatLng(53.819055, 27.8813694)],
+		[new google.maps.LatLng(53.700055, 27.5513694)],
+		[new google.maps.LatLng(53.809055, 27.5813694)],
+		[new google.maps.LatLng(53.859055, 27.5013694)],
+	]
+	var options = {
+		zoom: 10,
+		panControl: false,
+		mapTypeControl: false,
+		center: locations[0][0],
+		styles: [{ "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }, { "color": "#e0efef" }] }, { "featureType": "poi", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }, { "hue": "#1900ff" }, { "color": "#c0e8e8" }] }, { "featureType": "road", "elementType": "geometry", "stylers": [{ "lightness": 100 }, { "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "visibility": "on" }, { "lightness": 700 }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#7dcdcd" }] }],
+		scrollwheel: false,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById('map'), options);
+	var icon = {
+		url: 'img/icons/map.svg',
+		scaledSize: new google.maps.Size(18, 20),
+		anchor: new google.maps.Point(9, 10)
 	}
-	window.yandexMapDidInit = true;
+	for (var i = 0; i < locations.length; i++) {
+		var marker = new google.maps.Marker({
+			icon: icon,
+			position: locations[i][0],
+			map: map,
+		});
+		google.maps.event.addListener(marker, 'click', (function (marker, i) {
+			return function () {
+				for (var m = 0; m < markers.length; m++) {
+					markers[m].setIcon(icon);
+				}
+				var cnt = i + 1;
+				//infowindow.setContent(document.querySelector('.events-map__item_' + cnt).innerHTML);
+				//infowindow.open(map, marker);
+				marker.setIcon(icon);
+				map.setCenterWithOffset(marker.getPosition(), 0, 0);
+				setTimeout(function () {
 
-	const script = document.createElement('script');
-	script.type = 'text/javascript';
-	script.async = true;
-
-	script.src = 'https://api-maps.yandex.ru/2.1/?apikey=a9c8f6b4-0344-428b-a80a-969b0501ea50&lang=ru_RU';
-
-	const map = document.getElementById("map");
-
-	if (map) {
-		map.appendChild(script);
+				}, 10);
+			}
+		})(marker, i));
+		markers.push(marker);
 	}
-
-	initMap();
-}
-
-function initMap() {
-	if (window.ymaps) {
-		ymaps.ready(init);
-	} else {
-		setTimeout(() => {
-			initMap();
+	if (n) {
+		var nc = n - 1;
+		setTimeout(function () {
+			google.maps.event.trigger(markers[nc], 'click');
 		}, 500);
 	}
 }
+if (document.querySelector('#map')) {
+	mapAdd();
+}
 
 
-let psLoadedJs = false
-const getExtJs = () => {
-	// проверяем, была ли выполнена функция ранее
-	if (!psLoadedJs) {
-		psLoadedJs = true
-		// при выполенении функций удаляем события, которые были навешаны ранее.
-		window.removeEventListener("scroll", getExtJs, false)
-		window.removeEventListener("touchstart", getExtJs, false)
-		window.removeEventListener("mousemove", getExtJs, false)
-		window.removeEventListener("click", getExtJs, false)
-		window.removeEventListener("keydown", getExtJs, false)
-		clearTimeout(getExtJsTimeout)
-		setTimeout(() => {
-			initYandexMap()
-		}, 300)
-		// Для каждого скрипта нужно подбирать время, чтобы предыдущий успевал загрузиться и инициализироваться.
+/* YA
+function map(n) {
+	ymaps.ready(init);
+	function init() {
+		// Создание карты.
+		var myMap = new ymaps.Map("map", {
+			// Координаты центра карты.
+			// Порядок по умолчанию: «широта, долгота».
+			// Чтобы не определять координаты центра карты вручную,
+			// воспользуйтесь инструментом Определение координат.
+			controls: [],
+			center: [43.585525, 39.723062],
+			// Уровень масштабирования. Допустимые значения:
+			// от 0 (весь мир) до 19.
+			zoom: 10
+		});
+
+		let myPlacemark = new ymaps.Placemark([43.585525, 39.723062], {
+		},{
+			// Опции.
+			//balloonContentHeader: 'Mistoun',
+			//balloonContentBody: 'Москва, Николоямская 40с1',
+			//balloonContentFooter: '+ 7(495) 507-54 - 90',
+			//hasBalloon: true,
+			//hideIconOnBalloonOpen: true,
+
+			hasBalloon: false,
+			hideIconOnBalloonOpen: false,
+			// Необходимо указать данный тип макета.
+			iconLayout: 'default#imageWithContent',
+			// Своё изображение иконки метки.
+			iconImageHref: 'img/icons/map.svg',
+			// Размеры метки.
+			iconImageSize: [40, 40],
+			// Смещение левого верхнего угла иконки относительно
+			// её "ножки" (точки привязки).
+			iconImageOffset: [-20, -20],
+			// Смещение слоя с содержимым относительно слоя с картинкой.
+			iconContentOffset: [0, 0],
+		});
+		myMap.geoObjects.add(myPlacemark);
+
+		myMap.behaviors.disable('scrollZoom');
+		myMap.behaviors.disable('drag');
 	}
 }
-// Вешаем выполнение функцию на каждое необходимое событие. Здесь перечислены самые распространенные.
-window.addEventListener("load", function () {
-	setTimeout(function () {
-		if (document.querySelector('.map')) {
-			window.addEventListener("scroll", getExtJs, {
-				passive: true
-			})
-			window.addEventListener("touchstart", getExtJs, {
-				passive: true
-			})
-			window.addEventListener("mousemove", getExtJs, {
-				passive: true
-			})
-			window.addEventListener("click", getExtJs, {
-				passive: true
-			})
-			window.addEventListener("keydown", getExtJs, {
-				passive: true
-			})
-		}
-	}, 0);
-});
-// Если никакое событие не произошло, то выполняем функцию через 5 секунд
-let getExtJsTimeout = setTimeout(getExtJs, 5000)
+
+//Получить координаты:
+//http://dimik.github.io/ymaps/examples/location-tool/
+*/

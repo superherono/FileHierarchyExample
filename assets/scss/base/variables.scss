@@ -1,86 +1,57 @@
 // Брейк-поинты
-$md0: em(1719.98);
-$md1: em(1440.02);
-$md2: em(1024.02);
-$md3: em(768.02);
-$md5: em(649.98);
-$md4: em(479.98);
+$md1: em(1199.98); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$md2: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$md3: em(767.98); // Телефоны L
+$md4: em(479.98); // Телефоны S
+$md5: em(649.98); // Телефоны S
 
 :root {
-    --black: #000;
-    --black-light: #333;
-    --white: #fff;
-    --white-dark: #f1efeb;
+    --black-pure: #000;
+    --white-pure: #fff;
 
-    --main-color: var(--black-light);
+    --white: #dedfe2;
+    --white-darker: #fefeff;
+    --white-dark: #b3b4bb;
+    --black-dark: #111;
+    --secondary: #04091c;
+    --blue: #131729;
+    --blue-light: #1F89D4;
+    --blue-dark: #101828;
+    --blue-lightest: #eaeff3;
+    --orange: #fd9e28;
+    --orange-dark: #de8b27;
+    --green: #90d45f;
+    --green-darkest: #2b9086;
+    --green-darken: #55A69E;
+    --red: #da1e05;
+    --gray: #535459;
+    --gray-lightest: #f7f9fb;
+    --gray-light: #82848e;
+    --gray-lighter: #f4f6f8;
+    --cream: #f9d2c0;
+    --violet: #5b58e9;
+    --yellow: #ffcc00;
 
-    --gold: #D0B181;
-    --gold-dark: #B18949;
+    --gradient-dark: linear-gradient(0deg, #04091c, #04091c),
+        linear-gradient(0deg, #fff, #fff),
+        #fff;
 
+
+    --main-color: var(--white);
 
     //sizes
-    --radius-small: 8px;
+    --title-offsize: 2.25rem;
+    --suptitle-offsize: 1.5rem;
 
-    @media (min-width:$md3) {
-        --radius-large: 40px;
-    }
-
-    @media (max-width:$md3) {
-        --radius-large: 20px;
-    }
-
-    //font-sizes
-
-    @media (min-width:$md0) {
-        --font-size-h1: 44px;
-        --font-size-h2: 36px;
-        --font-size-h4: 24px;
-        --font-size-h5: 18px;
-
-        --font-size-main: 18px;
-        --font-size-small: 14px;
-    }
-
-    @media (max-width:$md0) {
-        --font-size-h5: 16px;
-    }
-
-    @media (min-width:$md3) and (max-width:$md0) {
-        --font-size-h1: 37px;
-        --font-size-h2: 30px;
-        --font-size-h4: 22px;
-    }
-
-    @media (min-width:$md4) and (max-width:$md3) {
-        --font-size-h1: 30px;
-        --font-size-h2: 26px;
-        --font-size-h4: 20px;
-    }
-
-    @media (min-width:$md4) and (max-width:$md0) {
-        --font-size-main: 16px;
-        --font-size-small: 12px;
-    }
+    --add-offsize: 1rem;
 
     @media (min-width:$md4) {
-        --font-size-h3: 14px;
+        --main-offsize: 1.3125rem;
     }
 
     @media (max-width:$md4) {
-        --font-size-h1: 26px;
-        --font-size-h2: 22px;
-        --font-size-h3: 12px;
-        --font-size-h4: 16px;
-
-        --font-size-main: 14px;
-        --font-size-small: 12px;
+        --main-offsize: 1.125rem;
     }
 
-    @media (min-width:$md3) {
-        --title-margin: 40px;
-    }
-
-    @media (max-width:$md3) {
-        --title-margin: 20px;
-    }
+    --spinner-size: 8px;
 }

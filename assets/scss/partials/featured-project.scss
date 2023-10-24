@@ -1,0 +1,116 @@
+.featured-project {
+    background: var(--gradient-dark);
+
+    // .featured-project__container
+    &__container {}
+
+    // .featured-project__body
+    &__body {
+        background-color: var(--blue);
+
+        @media (min-width:$md2) {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-direction: row-reverse;
+            padding: 80px;
+
+            border-radius: 20px;
+        }
+
+        @media (max-width:$md2) {
+            margin: 0 -20px;
+            padding: 30px 20px 50px;
+        }
+    }
+
+    // .featured-project__image
+    &__image {
+        border-radius: 20px;
+        overflow: hidden;
+
+        @media (min-width:$md2) {
+            flex: 0 1 480px;
+        }
+
+        @media (max-width:$md2) {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 50px;
+            margin-bottom: 50px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    // .featured-project__content
+    &__content {
+        @media (min-width:$md2) {
+            flex: 0 1 500px;
+            margin-right: 40px;
+        }
+    }
+
+    // .featured-project__descr
+    &__descr {
+        max-width: 462px;
+        margin-bottom: 90px;
+    }
+
+    // .featured-project__suptitle
+    &__suptitle {}
+
+    // .featured-project__title
+    &__title {
+        margin-bottom: 40px;
+
+        text-align: left;
+    }
+
+    // .featured-project__button
+    &__button {}
+
+    // .featured-project__review
+    &__review {}
+}
+
+.review-project {
+    position: relative;
+
+    // .review-project__text
+    &__text {
+        margin-bottom: 20px;
+
+        line-height: math.div(32, 21);
+        color: var(--white-pure);
+
+        @media (max-width:$md2) {
+            max-width: 500px;
+        }
+    }
+
+    // .review-project__author
+    &__author {
+        font-size: 18px;
+        line-height: math.div(26, 18);
+        opacity: .8;
+    }
+
+    &__quotes {
+        position: absolute;
+        left: 0;
+        opacity: .11;
+
+        @media (min-width:$md4) {
+            top: -18px;
+        }
+
+        @media (max-width:$md4) {
+            top: -21px;
+        }
+    }
+}

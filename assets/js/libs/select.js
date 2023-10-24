@@ -311,7 +311,7 @@ class SelectConstructor {
 	getSelectElementContent(selectOption) {
 		// Если для элемента указан вывод картинки или текста, перестраиваем конструкцию
 		const selectOptionData = selectOption.dataset.asset ? `${selectOption.dataset.asset}` : '';
-		const selectOptionDataHTML = selectOptionData.indexOf('images') >= 0 ? `<img src="${selectOptionData}" alt="">` : selectOptionData;
+		const selectOptionDataHTML = selectOptionData.indexOf('img') >= 0 ? `<img src="${selectOptionData}" alt="">` : selectOptionData;
 		let selectOptionContentHTML = ``;
 		selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectRow}">` : '';
 		selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectData}">` : '';

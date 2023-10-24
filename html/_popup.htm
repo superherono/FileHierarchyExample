@@ -1,4 +1,4 @@
-<!-- <div id="popup" aria-hidden="true" class="popup">
+<div id="popup" aria-hidden="true" class="popup succes">
 	<div class="popup__wrapper">
 		<div class="popup__content">
 			<button data-close type="button" class="popup__close">
@@ -6,9 +6,255 @@
 					<use xlink:href="img/icons/icons.svg#svg-close"></use>
 				</svg>
 			</button>
-			<div class="popup__text">
-				Text
+			<div class="popup__thanks">
+				<h2>Thank you!</h2>
+				<p>Your message was sent.</p>
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
+
+<div id="thanks-for-download" aria-hidden="true" class="popup thanks-for-download">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">
+				<svg width="20" height="20">
+					<use xlink:href="img/icons/icons.svg#svg-close"></use>
+				</svg>
+			</button>
+			<div class="thanks-for-download__body">
+				<div class="thanks-for-download__icon">
+					<svg width="48" height="48">
+						<use xlink:href="img/icons/icons.svg#svg-checkmark-popup"></use>
+					</svg>
+				</div>
+				<p class="thanks-for-download__text">Thanks for Downloading!</p>
+				<h2 class="thanks-for-download__title title">The e-book should be in your inbox by now 👍</h2>
+				<button type="button" data-close class="thanks-for-download__back">
+					<svg width="14" height="14">
+						<use xlink:href="img/icons/icons.svg#svg-arr-left"></use>
+					</svg>
+					<span>Back to website</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="shedule-consult" aria-hidden="true" class="popup shedule-consult">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">
+				<svg width="20" height="20">
+					<use xlink:href="img/icons/icons.svg#svg-close"></use>
+				</svg>
+			</button>
+			<div class="shedule-consult__body">
+				<!-- !!! DONT FORGET TO WRAP FORM -->
+
+				<form class="shedule-consult__wrapper" action="#" method="POST" data-dev data-ajax>
+					<!-- Select time block -->
+					<div class="shedule-consult__block shedule-consult__block--shedule active" data-shedule-step="1">
+						<div class="shedule-consult__top">
+							<p class="shedule-consult__suptitle">Select an available timeframe</p>
+							<h2 class="shedule-consult__title">Schedule a free discussion</h2>
+						</div>
+						<div class="shedule-consult__content" data-spollers="768,max">
+							<div class="shedule-consult__col col-shedule-consult">
+								<div class="col-shedule-consult__top" data-spoller>
+									<p class="col-shedule-consult__suptitle">Availability for</p>
+									<h3 class="col-shedule-consult__title">
+										<span>Fri, June 2nd</span>
+										<svg width="11" height="11">
+											<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+										</svg>
+									</h3>
+								</div>
+								<div class="col-shedule-consult__rows">
+									<div class="col-shedule-consult__row">
+										<input id="jun_01" type="radio" name="shedule" value="11-30_12-00">
+										<label for="jun_01" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+									<div class="col-shedule-consult__row">
+										<input id="jun_02" type="radio" name="shedule" value="11-20_11-50">
+										<label for="jun_02" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+									<div class="col-shedule-consult__row">
+										<input id="jun_03" type="radio" name="shedule" value="11-40_12-10">
+										<label for="jun_03" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="shedule-consult__col col-shedule-consult">
+								<div class="col-shedule-consult__top" data-spoller>
+									<p class="col-shedule-consult__suptitle">Availability for</p>
+									<h3 class="col-shedule-consult__title">
+										<span>Fri, June 3nd</span>
+										<svg width="11" height="11">
+											<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+										</svg>
+									</h3>
+								</div>
+								<div class="col-shedule-consult__rows">
+									<div class="col-shedule-consult__row">
+										<input id="jun_06" type="radio" name="shedule" value="11-30_12-00">
+										<label for="jun_06" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+									<div class="col-shedule-consult__row">
+										<input id="jun_07" type="radio" name="shedule" value="11-20_11-50">
+										<label for="jun_07" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+									<div class="col-shedule-consult__row">
+										<input id="jun_08" type="radio" name="shedule" value="11-40_12-10">
+										<label for="jun_08" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="shedule-consult__col col-shedule-consult">
+								<div class="col-shedule-consult__top" data-spoller>
+									<p class="col-shedule-consult__suptitle">Availability for</p>
+									<h3 class="col-shedule-consult__title">
+										<span>Fri, June 4nd</span>
+										<svg width="11" height="11">
+											<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+										</svg>
+									</h3>
+								</div>
+								<div class="col-shedule-consult__rows">
+									<div class="col-shedule-consult__row">
+										<input id="jun_10" type="radio" name="shedule" value="11-30_12-00">
+										<label for="jun_10" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+									<div class="col-shedule-consult__row">
+										<input id="jun_11" type="radio" name="shedule" value="11-20_11-50">
+										<label for="jun_11" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+									<div class="col-shedule-consult__row">
+										<input id="jun_12" type="radio" name="shedule" value="11-40_12-10">
+										<label for="jun_12" class="col-shedule-consult__label">
+											<span>11:30–12:00 (GMT+1)</span>
+											<svg width="11" height="11">
+												<use xlink:href="img/icons/icons.svg#svg-arr-right"></use>
+											</svg>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="shedule-consult__bottom-info">
+							<p>Or contact us through a form or email by visiting our <a href="#">Contact page</a></p>
+						</div>
+					</div>
+
+					<!-- Add details block -->
+					<div class="shedule-consult__block" hidden data-shedule-step="2">
+						<div class="shedule-consult__top">
+							<p class="shedule-consult__suptitle">Select an available timeframe</p>
+							<h2 class="shedule-consult__title">30′ meeting on Friday, June 2, 16:30–17:00 (GMT+1)</h2>
+						</div>
+						<div class="shedule-consult__content shedule-consult__content--single">
+							<div class="shedule-consult__col col-shedule-consult">
+								<div class="col-shedule-consult__top">
+									<p class="col-shedule-consult__suptitle">Availability for</p>
+									<h3 class="col-shedule-consult__title">Fri, June 2nd</h3>
+								</div>
+								<div class="col-shedule-consult__rows">
+									<div class="col-shedule-consult__row">
+										<p class="col-shedule-consult__caption">Preferred communication channel</p>
+										<div class="col-shedule-consult__input">
+											<select name="form[]" class="form">
+												<option value="1" selected data-asset="img/icons/slack.png">Slack</option>
+												<option value="1" selected data-asset="img/icons/slack.png">Slack</option>
+												<option value="1" selected data-asset="img/icons/slack.png">Slack</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-shedule-consult__row">
+										<p class="col-shedule-consult__caption">Name - company name</p>
+										<div class="col-shedule-consult__input">
+											<input autocomplete="off" type="text" name="form[]" data-error="Enter your name" placeholder="Your name" class="input">
+										</div>
+									</div>
+									<div class="col-shedule-consult__row">
+										<p class="col-shedule-consult__caption">Email address</p>
+										<div class="col-shedule-consult__input">
+											<input autocomplete="off" type="text" name="form[]" data-error="Enter your email" placeholder="Your email address" class="input">
+										</div>
+										<p class="col-shedule-consult__subtext">You’ll receive a confirmation email once the meeting has been approved and set.</p>
+									</div>
+								</div>
+								<button type="submit" class="col-shedule-consult__button button button--filled">
+									<svg width="24" height="24">
+										<use xlink:href="img/icons/icons.svg#svg-calendar"></use>
+									</svg>
+									<span>Schedule Meeting</span>
+								</button>
+							</div>
+						</div>
+						<div class="shedule-consult__bottom-info">
+							<p>Or contact us through a form or email by visiting our <a href="#">Contact page</a></p>
+							<button type="button" class="shedule-consult__link-back">
+								<svg width="12" height="12">
+									<use xlink:href="img/icons/icons.svg#svg-arr-left"></use>
+								</svg>
+								<span>Find another time slot</span>
+							</button>
+						</div>
+					</div>
+					<!-- Last step block block -->
+					<div class="shedule-consult__block" data-shedule-step="3">
+						<div class="shedule-consult__last-step last-step-shedule">
+							<div class="last-step-shedule__icon">
+								<svg width="48" height="48">
+									<use xlink:href="img/icons/icons.svg#svg-checkmark-popup"></use>
+								</svg>
+							</div>
+							<p class="last-step-shedule__suptitle">You’ve set a meeting with us</p>
+							<h2 class="last-step-shedule__title">Keep an eye on your inbox for the confirmation email.</h2>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

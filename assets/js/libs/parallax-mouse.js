@@ -3,13 +3,8 @@
 // Документация: 
 
 // Подключение функционала "Чертогов Фрилансера"
-import {
-	isMobile,
-	FLS
-} from "../files/functions.js";
-import {
-	flsModules
-} from "../files/modules.js";
+import { isMobile, FLS } from "../files/functions.js";
+import { flsModules } from "../files/modules.js";
 
 /*
 Предмету, который будет двигаться за мышью указать атрибут data-prlx-mouse.
@@ -69,10 +64,8 @@ class MousePRLX {
 
 
 			// Объявление переменных
-			let positionX = 0,
-				positionY = 0;
-			let coordXprocent = 0,
-				coordYprocent = 0;
+			let positionX = 0, positionY = 0;
+			let coordXprocent = 0, coordYprocent = 0;
 
 			setMouseParallaxStyle();
 
@@ -88,10 +81,9 @@ class MousePRLX {
 				const distY = coordYprocent - positionY;
 				positionX = positionX + (distX * paramAnimation / 1000);
 				positionY = positionY + (distY * paramAnimation / 1000);
-				el.style.cssText = `transform: translate3D(${directionX * positionX / (paramСoefficientX / 10)}%,${directionY * positionY / (paramСoefficientY / 10)}%,0) rotate(0.02deg);`;
+				el.style.cssText = `transform: translate3D(${directionX * positionX / (paramСoefficientX / 10)}%,${directionY * positionY / (paramСoefficientY / 10)}%,0);`;
 				requestAnimationFrame(setMouseParallaxStyle);
 			}
-
 			function mouseMoveParalax(wrapper = window) {
 				wrapper.addEventListener("mousemove", function (e) {
 					const offsetTop = el.getBoundingClientRect().top + window.scrollY;
@@ -117,3 +109,4 @@ class MousePRLX {
 }
 // Запускаем и добавляем в объект модулей
 flsModules.mousePrlx = new MousePRLX({});
+

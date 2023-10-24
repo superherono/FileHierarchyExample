@@ -1,0 +1,97 @@
+.partners {
+    @include adaptiveValue("padding-top", 180, 80, 0, 1300, 650);
+    @include adaptiveValue("padding-bottom", 120, 80, 0, 1300, 650);
+
+    background: var(--gradient-dark);
+
+    .page--about-us & {
+        @include adaptiveValue("padding-top", 100, 60, 0, 1300, 650);
+        @include adaptiveValue("padding-bottom", 150, 60, 0, 1300, 650);
+
+        background: var(--white-pure);
+    }
+
+    // .partners__container
+    &__container {}
+
+    // .partners__title
+    &__title {
+        margin-bottom: 10px;
+
+        font-size: 30px;
+        line-height: math.div(38, 30);
+        font-weight: 600;
+        color: var(--white-pure);
+        text-align: center;
+
+        .page--about-us & {
+            color: var(--secondary);
+        }
+    }
+
+    // .partners__descr
+    &__descr {
+        font-size: 24px;
+        line-height: math.div(36, 24);
+        text-align: center;
+
+        opacity: .7;
+
+        @media (min-width:$md3) {
+            max-width: 752px;
+            margin: 0 auto 80px;
+        }
+
+        @media (max-width:$md3) {
+            margin-bottom: 50px;
+        }
+
+        .page--about-us & {
+            color: var(--secondary);
+        }
+    }
+
+    // .partners__items
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0 auto;
+
+        @media (max-width:$md2) {
+            justify-content: center;
+        }
+
+        @media (min-width:$md4) {
+
+            max-width: 775px;
+            gap: 50px 90px;
+        }
+
+        @media (max-width:$md4) {
+            max-width: 270px;
+        }
+
+
+    }
+
+    // .partners__item
+    &__item {
+        @media (max-width:$md4) {
+            &:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+
+        img {
+            filter: grayscale(100%);
+            transition: filter .4s ease;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    filter: grayscale(0);
+                }
+            }
+        }
+    }
+}
